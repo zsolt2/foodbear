@@ -16,4 +16,7 @@ export class User {
     @Column()
     isAdmin: boolean;
 
+    @Column()
+    password: string;
+
 }

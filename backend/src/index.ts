@@ -26,11 +26,11 @@ createConnection(connectionOptions).then(async connection => {
     app.use('/api', api)
 
     // Express error handling
-    app.use((req, res, next) => {
-        setImmediate(() => {
-        next(new Error('Something went wrong'))
-        })
-    })
+    // app.use((req, res, next) => {
+    //     setImmediate(() => {
+    //     next(new Error('Something went wrong'))
+    //     })
+    // })
     
     app.use(function (err, req, res, next) {
         console.error(err.message)

@@ -8,10 +8,11 @@ module.exports = (req, res, next) => {
         jwt.verify(token, "longersecretisbetter");
         const decodeToken = jwt.decode(token, "longersecretisbetter");
         console.log(decodeToken);
-        req.user = new User();
-        req.user.id = decodeToken.id;
-        console.log(req.user);
-        next();
+        if(decodeToken.isAdmin == true){
+            next();
+        }else{
+            res.status(404).json({ message: "Not admin" });
+        }
     } catch (error) {
         console.log(error.message);
         res.status(401).json({ message: "No token provided" });
