@@ -1,111 +1,43 @@
 import "reflect-metadata";
 import {createConnection, getRepository} from "typeorm";
 import {User} from "./entity/User";
-import * as express from "express";
+//import * as express from "express";
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 import { connectionOptions } from "../ormconfig";
 
 createConnection(connectionOptions).then(async connection => {
 
-    const app = express();
+    const api = require('./routes/auth.routes')
 
-    app.use(express.json());
+    // Express settings
+    const app = express()
+    app.use(bodyParser.json())
+    app.use(
+    bodyParser.urlencoded({
+        extended: false,
+    }),
+    )
+    app.use(cors())
 
-    app.get('/api/users', async (req, res) => {
-        const repository = getRepository(User);
+    // Serve static resources
+    app.use('/public', express.static('public'))
+    app.use('/api', api)
 
-        try {
-            const users = await repository.find();
-            res.json(users);
-        } catch (err) {
-            res.status(500).json({
-                message: err.message
-            });
-        }
-    });
-
-    app.post('/api/users', async (req, res) => {
-        const body = req.body;
-        const repository = getRepository(User);
-        const user = repository.create(body);
-
-        try {
-            const userInserted = await repository.save(user);
-            res.json(userInserted);
-        } catch (err) {
-            res.status(500).json({
-                message: err.message
-            });
-        }
-    });
-
-    app.get('/api/users', async (req, res) => {
-        const repository = getRepository(User);
-
-        try {
-            const users = await repository.find();
-            res.json(users);
-        } catch (err) {
-            res.status(500).json({
-                message: err.message
-            });
-        }
-    });
-
-    app.get('/api/users/:id', async (req, res) => {
-        const userId = req.params.id;
-        const repository = getRepository(User);
-
-        try {
-            const user = await repository.findOne(userId);
-
-            if (!user) {
-                return res.status(404).json({ message: 'User not found.' });
-            }
-
-            res.json(user);
-        } catch (err) {
-            res.status(500).json({ message: err.message });
-        }
-
-    });
-
-    app.put('/api/users', async (req, res) => {
-        const repository = getRepository(User);
-        const user = repository.create(req.body as {});
-
-        try {
-            const existingUser = await repository.findOne(user.id);
-            if (!existingUser) {
-                return res.status(404).json({ message: 'Not existing user.' });
-            }
-
-            const modifiedUser = await repository.save(user);
-            res.json(modifiedUser);
-        } catch (err) {
-            res.status(500).json({ message: err.message });
-        }
-
-    });
-
-    app.delete('/api/users/:id', async (req, res) => {
-        const userId = req.params.id;
-        const repository = getRepository(User);
-
-        try {
-            const user = await repository.findOne(userId);
-
-            if (!user) {
-                return res.status(404).json({ message: 'Not existing user.' });
-            }
-
-            await repository.delete(user);
-
-            res.status(200).send();
-        } catch (err) {
-            res.status(500).json({ message: err.message });
-        }
-    });
-
+    // Express error handling
+    app.use((req, res, next) => {
+        setImmediate(() => {
+        next(new Error('Something went wrong'))
+        })
+    })
+    
+    app.use(function (err, req, res, next) {
+        console.error(err.message)
+        if (!err.statusCode) err.statusCode = 500
+        res.status(err.statusCode).send(err.message)
+    })
+  
     app.listen(3000, () => {
         console.log('Server listening on :3000 ...');
     });
