@@ -52,7 +52,6 @@ export class AuthService {
 
   public isLoggedIn(): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
-      //catch the error
       const token = localStorage.getItem('access_token');
       this.http.get<boolean>(`${this.endpoint}/token`).subscribe((res:any)=>{
         console.log(res)
@@ -61,9 +60,6 @@ export class AuthService {
         resolve(false);
       });
     });
-    
-    //let authToken = localStorage.getItem('access_token');
-    //return authToken !== null ? true : false;
   }
 
   //request if the authenticated user is admin
@@ -71,6 +67,8 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.http.get<boolean>(`${this.endpoint}/user/isadmin`).subscribe((res:any)=>{ 
         return resolve(res.isAdmin);   
+      }, (err)=>{
+        return resolve(false);
       });
     });
   }
@@ -84,13 +82,17 @@ export class AuthService {
 
   // User profile
   getUserProfile(): Observable<any> {
-    let api = `${this.endpoint}/users`;
+    let api = `${this.endpoint}/user`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};
       }),
       catchError(this.handleError)
     );
+  }
+
+  getCurrentUser():User{
+    return this.currentUser;
   }
 
   // Error

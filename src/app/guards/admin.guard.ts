@@ -12,19 +12,19 @@ import { AuthService } from './../services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(public authService: AuthService, public router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.isLoggedIn().then((res) => {
+    return this.authService.isAdmin().then((res) => {
       if (res) {
         return true;
       } else {
-        window.alert('Access not allowed!');
-        this.router.navigate(['login']);
+        window.alert('Access only allowed for admins!');
+        this.router.navigate(['mainpage']);
         return false;
       }
     });

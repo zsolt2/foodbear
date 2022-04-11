@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../models/User';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  currentUser!: User;
 
-  ngOnInit(): void {
+  constructor(public authService:AuthService) { }
+
+   ngOnInit(): void {
+     this.currentUser = this.authService.getCurrentUser();
+     console.log("Main page"); console.log(this.currentUser);
   }
 
 }

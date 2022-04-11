@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { User } from '../../models/User';
 
 @Component({
@@ -10,9 +11,15 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
   @Input() currentUser!:User;
+  @Input() authService!:AuthService;
 
   ngOnInit(): void {
-    const userID = this.currentUser.isAdmin;
+    console.log('Navbar: '); console.log(this.currentUser);
   }
+
+  logout(){
+    this.authService.doLogout();
+  }
+
 
 }
