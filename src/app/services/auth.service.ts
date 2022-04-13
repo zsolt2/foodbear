@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
-import { Observable, throwError } from 'rxjs';
+import { lastValueFrom, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
   HttpClient,
@@ -18,6 +18,7 @@ export class AuthService {
   endpoint: string = 'http://localhost:3000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser!:User;
+  b!:boolean;
 
   constructor(private http: HttpClient, public router: Router) {}
 
@@ -65,16 +66,17 @@ export class AuthService {
   }
 
   //request if the authenticated user is admin
-  public async isAdmin(){
-    return new Promise((resolve, reject) => {
-      this.http.get<boolean>(`${this.endpoint}/user/isadmin`).subscribe((res:any)=>{ 
-        return resolve(res.isAdmin);   
-      }, (err)=>{
-        return resolve(false);
-      });
-    });
+  public isAdmin(){
+    return lastValueFrom(this.http.get<boolean>(`${this.endpoint}/user/isadmin`)).catch(err => {return false });
+    // return new Promise((resolve, reject) => {
+    //   this.http.get<boolean>(`${this.endpoint}/user/isadmin`).subscribe((res:any)=>{ 
+    //     return resolve(res.isAdmin);   
+    //   }, (err)=>{
+    //     return resolve(false);
+    //   });
+    // });
   }
-
+  
   doLogout() {
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
@@ -90,12 +92,8 @@ export class AuthService {
         return res || {};
       }),
       
-      //catchError(this.handleError)
+      catchError(this.handleError)
     );
-  }
-
-  getCurrentUser():User{
-    return this.currentUser;
   }
 
   // Error

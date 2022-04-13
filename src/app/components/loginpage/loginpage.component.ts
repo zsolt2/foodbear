@@ -28,7 +28,7 @@ export class LoginpageComponent implements OnInit {
   loginUser() {
     try{
       if(this.signinForm.valid){
-        this.authService.signIn(this.signinForm.value);
+        console.log(this.authService.signIn(this.signinForm.value));
       }
     }catch(e){ 
       this.invalidLogin = true;

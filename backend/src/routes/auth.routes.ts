@@ -142,7 +142,7 @@ router.get('/user/isadmin', authorize,async (req, res,next) => {
             return res.status(404).json({ message: 'User not found.' });
         }
         console.log('data from db:' + user.isAdmin);
-        res.status(200).json({isAdmin : user.isAdmin});
+        res.status(200).json(user.isAdmin);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

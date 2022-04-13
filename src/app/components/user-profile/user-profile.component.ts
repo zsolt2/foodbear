@@ -13,7 +13,7 @@ export class UserProfileComponent implements OnInit {
   @Input() user!:User;
   ngOnInit( ): void {
     if(!this.user)
-      this.user = this.authService.getCurrentUser();
+      this.authService.getUserProfile().subscribe((user)=>this.user=user);
   }
 
 }
