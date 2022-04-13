@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-add-user',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
 
-  constructor() { }
+  registerForm: FormGroup;
+
+  constructor( public authService:AuthService,
+               public fb:FormBuilder) { 
+    this.registerForm = this.fb.group({
+          email: [''],
+          password: [''],
+          name: [''],
+          isAdmin: [''],
+        });
+  }
 
   ngOnInit(): void {
   }

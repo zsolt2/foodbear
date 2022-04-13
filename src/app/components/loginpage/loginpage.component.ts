@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginpageComponent implements OnInit {
   signinForm: FormGroup;
+  invalidLogin!: boolean;
 
   constructor(
     public fb: FormBuilder,
@@ -17,8 +18,8 @@ export class LoginpageComponent implements OnInit {
     public router: Router
   ) {
     this.signinForm = this.fb.group({
-      email: [''],
-      password: [''],
+      email: ['',{validators: [Validators.required, Validators.email], updateOn: 'submit'}],
+      password: ['',{validators: [Validators.required], updateOn: 'submit'}],
     });
   }
 
@@ -26,8 +27,12 @@ export class LoginpageComponent implements OnInit {
 
   loginUser() {
     try{
-      this.authService.signIn(this.signinForm.value);
+      if(this.signinForm.valid){
+        this.authService.signIn(this.signinForm.value);
+      }
     }catch(e){ 
+      this.invalidLogin = true;
+      console.log(this.invalidLogin);
       window.alert("Invalid Credentials");
     }
   }

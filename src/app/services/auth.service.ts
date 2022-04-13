@@ -36,9 +36,11 @@ export class AuthService {
         this.getUserProfile().subscribe((res) => {
           this.currentUser = res;
           this.router.navigate(['mainpage']);
+        }, (err) => {
+          console.log('belso hiba');
         });
       }, (err) => {
-        window.alert("Invalid email or password");
+        return null;
       });
   }
 
@@ -54,7 +56,7 @@ export class AuthService {
     return new Promise<boolean>((resolve, reject) => {
       const token = localStorage.getItem('access_token');
       this.http.get<boolean>(`${this.endpoint}/token`).subscribe((res:any)=>{
-        console.log(res)
+        //console.log(res)
         resolve(res);
       }, (err) => {
         resolve(false);
@@ -87,7 +89,8 @@ export class AuthService {
       map((res) => {
         return res || {};
       }),
-      catchError(this.handleError)
+      
+      //catchError(this.handleError)
     );
   }
 
@@ -97,6 +100,7 @@ export class AuthService {
 
   // Error
   handleError(error: HttpErrorResponse) {
+    console.log('error handler')
     let msg = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error
