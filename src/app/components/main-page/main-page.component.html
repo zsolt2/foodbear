@@ -1,4 +1,4 @@
-<app-navbar [authService]="authService" [currentUser]="currentUser"></app-navbar>
+<app-navbar *ngIf="currentUser" [authService]="authService" [currentUser]="currentUser"></app-navbar>
 <div class="container-fluid">
     <router-outlet></router-outlet>
 </div>

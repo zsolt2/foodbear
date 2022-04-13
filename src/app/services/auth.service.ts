@@ -37,11 +37,9 @@ export class AuthService {
         this.getUserProfile().subscribe((res) => {
           this.currentUser = res;
           this.router.navigate(['mainpage']);
-        }, (err) => {
-          console.log('belso hiba');
         });
       }, (err) => {
-        return null;
+        throwError(err);
       });
   }
 
@@ -75,6 +73,10 @@ export class AuthService {
     //     return resolve(false);
     //   });
     // });
+  }
+
+  getCurrentUser(): Promise<User> {
+      return lastValueFrom(this.http.get<User>(`${this.endpoint}/user`));
   }
   
   doLogout() {
