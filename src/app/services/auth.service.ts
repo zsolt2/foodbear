@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
-import { lastValueFrom, Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { lastValueFrom, Observable, of, throwError } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import {
   HttpClient,
   HttpHeaders,
@@ -12,9 +12,8 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-
 export class AuthService {
-  
+
   endpoint: string = 'http://localhost:3000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser!:User;
@@ -30,17 +29,21 @@ export class AuthService {
 
   // Sign-in
   signIn(user: User) {
-    return this.http
-      .post<any>(`${this.endpoint}/login`, user)
-      .subscribe((res: any) => {
+    const loginUser$ = this.http.post<any>(`${this.endpoint}/login`, user).pipe(
+      switchMap((res: any) => {
         localStorage.setItem('access_token', res.token);
-        this.getUserProfile().subscribe((res) => {
-          this.currentUser = res;
-          this.router.navigate(['mainpage']);
-        });
-      }, (err) => {
-        throwError(err);
-      });
+        return this.getUserProfile();
+      })
+    );
+
+    const saveCredentials$ = loginUser$.pipe(
+      switchMap((userProfile: any) => {
+        this.currentUser = userProfile;
+        return of(userProfile);
+      })
+    );
+
+    return saveCredentials$;
   }
 
   getCurrentUserID(){
@@ -87,9 +90,9 @@ export class AuthService {
   }
 
   // User profile
-  getUserProfile(): Observable<any> {
+  getUserProfile(): Observable<User> {
     let api = `${this.endpoint}/user`;
-    return this.http.get(api, { headers: this.headers }).pipe(
+    return this.http.get<User>(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};
       }),
