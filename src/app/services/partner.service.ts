@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/User';
-
-import { lastValueFrom, Observable, of, throwError } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { lastValueFrom} from 'rxjs';
 
 import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
+  HttpClient
 } from '@angular/common/http';
+import { Partner } from '../models/Partner';
 
 
 @Injectable({
@@ -16,7 +12,22 @@ import {
 })
 export class PartnerService {
 
-  createPartner(){
-    
+  constructor(private http: HttpClient) { }
+
+  createPartner(partner:Partner){
+      return lastValueFrom(this.http.post<Partner>('/api/createpartner', partner));
   }
+
+  getPartner(id:number){
+    return lastValueFrom(this.http.get<Partner>(`/api/partner/${id}`));
+  }
+
+  getAllPartners(){
+    return lastValueFrom(this.http.get<Partner[]>('/api/partner'));
+  }
+
+  deletePartner(id:number){
+    return lastValueFrom(this.http.delete(`/api/partner/${id}`));
+  }
+
 }

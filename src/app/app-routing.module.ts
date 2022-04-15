@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddPartnerComponent } from './components/add-partner/add-partner.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { HelloComponent } from './components/hello/hello.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
     { path:'adduser', component: AddUserComponent, canActivate: [AdminGuard]},
     { path: 'listusers', component: ListUsersComponent, canActivate: [AdminGuard] },
+    { path: 'addpartner', component: AddPartnerComponent, canActivate: [AdminGuard] },
   ] },
 ];
 

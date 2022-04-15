@@ -6,7 +6,7 @@ import { authorize } from "../middlewares/auth";
 
 const userValidator = require("../validator/userValidator");
 
-export function getRoutes(){
+export function getAuthRoutes(){
     const router = express.Router();
     
     const authController = new AuthController();

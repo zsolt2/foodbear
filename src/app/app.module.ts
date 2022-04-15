@@ -13,6 +13,8 @@ import { HelloComponent } from './components/hello/hello.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { AddPartnerComponent } from './components/add-partner/add-partner.component';
+import { PartnerComponent } from './components/partner/partner.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     HelloComponent,
     ListUsersComponent,
     MainPageComponent,
-    AddUserComponent
+    AddUserComponent,
+    AddPartnerComponent,
+    PartnerComponent
   ],
   imports: [
     BrowserModule,
