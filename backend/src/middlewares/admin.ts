@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
         if(decodeToken.isAdmin == true){
             next();
         }else{
-            res.status(404).json({ message: "Not admin" });
+            res.status(401).json({ message: "Not admin" });
         }
     } catch (error) {
         console.log(error.message);

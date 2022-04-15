@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
-import { lastValueFrom, Observable, throwError } from 'rxjs';
+import { lastValueFrom, Observable, Subscription, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
   HttpClient,
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 
 export class AuthService {
   
+  
   endpoint: string = 'http://localhost:3000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser!:User;
@@ -25,11 +26,12 @@ export class AuthService {
   // Sign-up
   signUp(user: User): Observable<any> {
     let api = `${this.endpoint}/createuser`;
+    console.log(user);
     return this.http.post(api, user).pipe(catchError(this.handleError));
   }
 
   // Sign-in
-  signIn(user: User) {
+  signIn(user: User){
     return this.http
       .post<any>(`${this.endpoint}/login`, user)
       .subscribe((res: any) => {
@@ -109,7 +111,21 @@ export class AuthService {
       // server-side error
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
+    console.log(msg);
     return throwError(msg);
+  }
+
+  addUser(user: User){
+    console.log("hello")
+    console.log(user);
+    return lastValueFrom(this.http.post(`${this.endpoint}/createuser`, user ));
+  }
+
+  deleteUser(id: number) {
+    this.http.delete(`${this.endpoint}/users/${id}`).subscribe((res) => {}, (err) => {
+      alert("You can not delete your own profile.\nContact your admin to delete yor profile");
+      throwError(err);
+    });
   }
 
 }

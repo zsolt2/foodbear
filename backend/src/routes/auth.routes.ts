@@ -73,12 +73,12 @@ router.post('/createuser',[
       .isEmpty()
       .isLength({ min: 3 })
       .withMessage('Name must be atleast 3 characters long'),
-    check('email', 'Email is required').not().isEmpty().isEmail(),
+    check('email', 'Email is not valid').not().isEmpty().isEmail(),
     check('isAdmin','isAdmin should be a boolean').isBoolean(),
-    check('password', 'Password should be at least 5 characters characters long')
+    check('password', 'Password should be at least 8 characters characters long')
       .not()
       .isEmpty()
-      .isLength({ min: 5}),
+      .isLength({ min: 8}),
   ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

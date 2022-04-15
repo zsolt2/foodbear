@@ -18,8 +18,8 @@ export class LoginpageComponent implements OnInit {
     public router: Router
   ) {
     this.signinForm = this.fb.group({
-      email: ['',{validators: [Validators.required, Validators.email], updateOn: 'submit'}],
-      password: ['',{validators: [Validators.required], updateOn: 'submit'}],
+      email: ['',{validators: [Validators.required, Validators.email], updateOn: 'blur'}],
+      password: ['',{validators: [Validators.required], updateOn: 'blur'}],
     });
   }
 
@@ -36,4 +36,6 @@ export class LoginpageComponent implements OnInit {
       window.alert("Invalid Credentials");
     }
   }
+
+  
 }

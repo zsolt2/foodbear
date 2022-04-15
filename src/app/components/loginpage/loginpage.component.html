@@ -1,6 +1,6 @@
 <!--create a login page using bootstrap-->
 
-<div class="auth-wrapper">
+<div class="auth-wrapper col-md-4">
     <form class="form-signin" [formGroup]="signinForm" (ngSubmit)="loginUser()">
       <h3 class="h3 mb-3 font-weight-normal text-center">Please sign in</h3>
       <div class="form-group">
@@ -10,7 +10,11 @@
           class="form-control"
           formControlName="email"
           placeholder="Enter email"
+          [ngClass]="{ 'is-invalid': signinForm.invalid && (signinForm.dirty ) && signinForm.controls['email'].errors }"
         />
+        <span class="invalid-feedback">
+          Email is not valid
+        </span>
       </div>
       <div class="form-group">
         <label>Password</label>
@@ -19,9 +23,13 @@
           class="form-control"
           formControlName="password"
           placeholder="Password"
+          [ngClass]="{ 'is-invalid': signinForm.invalid && (signinForm.dirty) && signinForm.controls['password'].errors }"
         />
+        <span class="invalid-feedback">
+          Please enter a password
+        </span>
       </div>
-      <div *ngIf="signinForm.invalid && (signinForm.dirty || signinForm.touched)" class="alert alert-danger" role="alert">
+      <!-- <div *ngIf="signinForm.invalid && (signinForm.dirty || signinForm.touched)" class="alert alert-danger" role="alert">
         Hiba
         <div *ngIf="signinForm.controls['email'].errors?.['required']">
           Email is required.
@@ -32,10 +40,11 @@
         <div *ngIf="signinForm.controls['password'].errors?.['required']">
           Password is required.
         </div>
-      </div>
+      </div> -->
       
-      <button type="submit" class="btn btn-block btn-primary">Sign in</button>
+      <button type="submit disabled" class="btn btn-block btn-primary">Sign in</button>
     </form>
+    
     {{invalidLogin}}
     <div *ngIf="invalidLogin==true" class="alert alert-danger"  role="alter">
       Invalid creadentials

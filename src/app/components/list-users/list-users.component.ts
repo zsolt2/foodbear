@@ -11,11 +11,14 @@ export class ListUsersComponent implements OnInit {
 
   users : User[]=[];
 
-
   constructor(private userService: UserService) { }
 
   async ngOnInit(): Promise<void> {
     this.users = await this.userService.getUsers();
     console.log(this.users);
+  }
+
+  removeUser(user: User){
+    this.users = this.users.filter(u => u.id !== user.id);
   }
 }
