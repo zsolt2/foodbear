@@ -3,25 +3,15 @@ import { User } from "../entity/User";
 //import { jwt } from "jsonwebtoken";
 //import { bcrypt } from "bcrypt";
 import { validationResult } from "express-validator";
+import { Controller } from "./base.controller";
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-export class AuthController{
+export class AuthController extends Controller{
     repository = getRepository(User);
 
     
-    // Get all users
-    getUsers = async (req, res,next)=>{
-        try {
-            const users = await this.repository.find();
-            res.json(users);
-        } catch (err) {
-            res.status(500).json({
-                message: err.message
-            });
-        }
-    }
 
     login = async (req, res, next)=>{
         console.log(req.body);
@@ -70,34 +60,9 @@ export class AuthController{
             return res.status(422).json({ errors: errors.array() });
         }
     
-        const body = req.body;
-        body.password = await bcrypt.hash(body.password, 10);
-        const user = this.repository.create(body);
-    
-        try {
-            const userInserted = await this.repository.save(user);
-            res.json(userInserted);
-        } catch (err) {
-            res.status(500).json({
-                message: err.message
-            });
-        }
+        req.body.password = await bcrypt.hash(req.body.password, 10);
+        await this.create( req, res);
     }
-
-    getUser = async(req, res)=>{
-        const userId = req.user.id;
-        try {
-            const user = await this.repository.findOne(userId);
-    
-            if (!user) {
-                return res.status(404).json({ message: 'User not found.' });
-            }
-    
-            res.json(user);
-        } catch (err) {
-            res.status(500).json({ message: err.message });
-        }
-    };
 
     isAdmin=async (req, res,next)=> {
         const userId = req.user.id;
@@ -133,22 +98,4 @@ export class AuthController{
 //     }
 
 // });
-    deleteUser = async(req, res)=>{
-        const userId = req.params.id;
-        
-        try {
-            const user = await this.repository.findOne(userId);
-    
-            if (!user) {
-                return res.status(404).json({ message: 'Not existing user.' });
-            }
-    
-            await this.repository.delete(user);
-    
-            res.status(200).send();
-        } catch (err) {
-            res.status(500).json({ message: err.message });
-        }
-    }
-
 }

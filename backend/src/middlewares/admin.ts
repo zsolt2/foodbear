@@ -1,3 +1,5 @@
+import { User } from "../entity/User";
+
 const jwt = require("jsonwebtoken");
 
 export function authorizeAdmin(req, res, next){
@@ -6,6 +8,10 @@ export function authorizeAdmin(req, res, next){
         
         jwt.verify(token, "longersecretisbetter");
         const decodeToken = jwt.decode(token, "longersecretisbetter");
+        req.user = new User();
+        req.user.id = decodeToken.id;
+        req.user.isAdmin = decodeToken.isAdmin;
+        console.log("authorize "); console.log(req.user);
         console.log(decodeToken);
         if(decodeToken.isAdmin == true){
             next();
