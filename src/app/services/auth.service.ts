@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
+
 import { lastValueFrom, Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
+
 import {
   HttpClient,
   HttpHeaders,
@@ -24,6 +26,7 @@ export class AuthService {
   // Sign-up
   signUp(user: User): Observable<any> {
     let api = `${this.endpoint}/createuser`;
+    console.log(user);
     return this.http.post(api, user).pipe(catchError(this.handleError));
   }
 
@@ -78,8 +81,11 @@ export class AuthService {
     // });
   }
 
-  getCurrentUser(): Promise<User> {
-      return lastValueFrom(this.http.get<User>(`${this.endpoint}/user`));
+  async getCurrentUser(): Promise<User> {
+      if( this.currentUser == null ){
+        this.currentUser = await lastValueFrom(this.http.get<User>(`${this.endpoint}/user`)); 
+      } 
+      return this.currentUser;
   }
   
   doLogout() {
@@ -112,7 +118,21 @@ export class AuthService {
       // server-side error
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
+    console.log(msg);
     return throwError(msg);
+  }
+
+  addUser(user: User){
+    console.log("hello")
+    console.log(user);
+    return lastValueFrom(this.http.post(`${this.endpoint}/createuser`, user ));
+  }
+
+  deleteUser(id: number) {
+    this.http.delete(`${this.endpoint}/users/${id}`).subscribe((res) => {}, (err) => {
+      alert("You can not delete your own profile.\nContact your admin to delete yor profile");
+      throwError(err);
+    });
   }
 
 }
