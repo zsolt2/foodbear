@@ -6,14 +6,14 @@ export function authorizeAdmin(req, res, next){
         
         jwt.verify(token, "longersecretisbetter");
         const decodeToken = jwt.decode(token, "longersecretisbetter");
-        console.log(decodeToken);
+        console.log("authorize admin" + decodeToken);
         if(decodeToken.isAdmin == true){
             next();
         }else{
             res.status(401).json({ message: "Not admin" });
         }
     } catch (error) {
-        console.log(error.message);
+        console.log("authorize admin error" + error.message);
         res.status(401).json({ message: "No token provided" });
     }
 };

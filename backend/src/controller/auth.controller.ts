@@ -1,15 +1,18 @@
 import { getRepository, Repository} from "typeorm";
 import { User } from "../entity/User";
-import { jwt } from "jsonwebtoken";
-import { bcrypt } from "bcrypt";
+//import { jwt } from "jsonwebtoken";
+//import { bcrypt } from "bcrypt";
 import { validationResult } from "express-validator";
 
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
 export class AuthController{
-    repository=getRepository(User);
+    repository = getRepository(User);
 
     
     // Get all users
-    async getUsers (req, res,next){
+    getUsers = async (req, res,next)=>{
         try {
             const users = await this.repository.find();
             res.json(users);
@@ -20,7 +23,7 @@ export class AuthController{
         }
     }
 
-    async login (req, res, next){
+    login = async (req, res, next)=>{
         console.log(req.body);
         const email = req.body.email;
         try{
@@ -30,7 +33,8 @@ export class AuthController{
                     message: 'Invalid email or password'
                 });
             }
-            const passwordIsValid = bcrypt.compareSync(req.body.password, req.body.password);
+            const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+            
             if(!passwordIsValid){
                 return res.status(401).json({
                     message: 'Invalid email or password'
@@ -53,14 +57,14 @@ export class AuthController{
                 id: user.id,
             });
         }catch(err){
-            console.log(err);
+            console.log("login error" + err);
             res.status(500).json({
                 message: err.message
             });
         }
     }
 
-    async createUser (req, res){
+    createUser = async (req, res)=>{
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.array() });
@@ -80,7 +84,7 @@ export class AuthController{
         }
     }
 
-    async getUser (req, res){
+    getUser = async(req, res)=>{
         const userId = req.user.id;
         try {
             const user = await this.repository.findOne(userId);
@@ -95,9 +99,9 @@ export class AuthController{
         }
     };
 
-    async isAdmin (req, res,next) {
+    isAdmin=async (req, res,next)=> {
         const userId = req.user.id;
-        console.log(userId);
+        console.log("isadmin user id " + userId);
         try {
             const user = await this.repository.findOne(userId);
     
@@ -129,7 +133,7 @@ export class AuthController{
 //     }
 
 // });
-    async deleteUser(req, res){
+    deleteUser = async(req, res)=>{
         const userId = req.params.id;
         
         try {

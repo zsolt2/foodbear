@@ -1,5 +1,6 @@
 import { User } from "../entity/User";
-import { jwt } from "jsonwebtoken";
+
+const jwt = require("jsonwebtoken");
 
 export function authorize(req, res, next){
     try {
@@ -7,13 +8,13 @@ export function authorize(req, res, next){
         
         jwt.verify(token, "longersecretisbetter");
         const decodeToken = jwt.decode(token, "longersecretisbetter");
-        console.log(decodeToken);
+        console.log("decoded token" + decodeToken);
         req.user = new User();
         req.user.id = decodeToken.id;
-        console.log(req.user);
+        console.log("authorize " + req.user);
         next();
     } catch (error) {
-        console.log(error.message);
+        console.log("authorize error" + error.message);
         res.status(401).json({ message: "No token provided" });
     }
 };

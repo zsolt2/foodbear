@@ -1,8 +1,7 @@
 import "reflect-metadata";
-import {createConnection, getRepository} from "typeorm";
-import {User} from "./entity/User";
-//import * as express from "express";
-const express = require('express')
+import {createConnection} from "typeorm";
+import * as express from "express";
+//const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 import { connectionOptions } from "../ormconfig";
@@ -10,7 +9,7 @@ import { getRoutes } from "./routes/auth.routes";
 
 createConnection(connectionOptions).then(async connection => {
 
-    const api = require('./routes/auth.routes')
+    //const api = require('./routes/auth.routes')
 
     // Express settings
     const app = express()
@@ -43,4 +42,4 @@ createConnection(connectionOptions).then(async connection => {
         console.log('Server listening on :3000 ...');
     });
 
-}).catch(error => console.log(error));
+}).catch(error => console.log( "index error" + error));
