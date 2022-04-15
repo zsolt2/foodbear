@@ -29,13 +29,11 @@ export class LoginpageComponent implements OnInit {
     if (this.signinForm.valid) {
       this.authService.signIn(this.signinForm.value).subscribe({
         next: profileData => {
-          alert(JSON.stringify(profileData)); // TODO: delete this line
           this.router.navigate(['mainpage']);
         },
         error: err => {
           this.invalidLogin = true;
-          console.error('Login error:', err); // TODO: delete this line
-          window.alert("Invalid Credentials");
+          //window.alert("Invalid Credentials");
         }
       });
     }
