@@ -6,7 +6,7 @@ export function authorizeAdmin(req, res, next){
         
         jwt.verify(token, "longersecretisbetter");
         const decodeToken = jwt.decode(token, "longersecretisbetter");
-        console.log("authorize admin" + decodeToken);
+        console.log(decodeToken);
         if(decodeToken.isAdmin == true){
             next();
         }else{
