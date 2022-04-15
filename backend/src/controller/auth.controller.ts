@@ -11,8 +11,6 @@ const jwt = require("jsonwebtoken");
 export class AuthController extends Controller{
     repository = getRepository(User);
 
-    
-
     login = async (req, res, next)=>{
         console.log(req.body);
         const email = req.body.email;
