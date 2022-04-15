@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit {
       console.log("user deleted")
       await this.authService.deleteUser(this.user.id);
       this.onUserDeleted.emit();
+      // ToDo: fix when know how to throw error 
       const currentUser = (await this.authService.getCurrentUser()).id;
       if(currentUser === this.user.id){
         this.authService.doLogout();

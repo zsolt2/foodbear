@@ -77,8 +77,11 @@ export class AuthService {
     // });
   }
 
-  getCurrentUser(): Promise<User> {
-      return lastValueFrom(this.http.get<User>(`${this.endpoint}/user`));
+  async getCurrentUser(): Promise<User> {
+      if( this.currentUser == null ){
+        this.currentUser = await lastValueFrom(this.http.get<User>(`${this.endpoint}/user`)); 
+      } 
+      return this.currentUser;
   }
   
   doLogout() {
