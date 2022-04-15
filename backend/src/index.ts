@@ -6,6 +6,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 import { connectionOptions } from "../ormconfig";
+import { getRoutes } from "./routes/auth.routes";
 
 createConnection(connectionOptions).then(async connection => {
 
@@ -13,17 +14,17 @@ createConnection(connectionOptions).then(async connection => {
 
     // Express settings
     const app = express()
-    app.use(bodyParser.json())
-    app.use(
-    bodyParser.urlencoded({
-        extended: false,
-    }),
-    )
+    app.use(express.json())
+    // app.use(
+    // bodyParser.urlencoded({
+    //     extended: false,
+    // }),
+    // )
     app.use(cors())
 
     // Serve static resources
-    app.use('/public', express.static('public'))
-    app.use('/api', api)
+    //app.use('/public', express.static('public'))
+    app.use(getRoutes())
 
     // Express error handling
     // app.use((req, res, next) => {

@@ -1,7 +1,7 @@
 import { User } from "../entity/User";
+import { jwt } from "jsonwebtoken";
 
-const jwt = require("jsonwebtoken");
-module.exports = (req, res, next) => {
+export function authorize(req, res, next){
     try {
         const token = req.headers.authorization.split(" ")[1];
         
