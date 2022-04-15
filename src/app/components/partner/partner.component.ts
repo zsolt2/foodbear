@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Partner } from '../../models/Partner';
 
 @Component({
@@ -9,10 +9,19 @@ import { Partner } from '../../models/Partner';
 export class PartnerComponent implements OnInit {
 
   @Input() partner!: Partner;
+  @Output() onDeleted = new EventEmitter<number>();
+  @Output() onModified = new EventEmitter<Partner>();
   
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  delete(){
+    this.onDeleted.emit(this.partner.id);
+  }
+  modify(){
+    this.onModified.emit(this.partner);
   }
 
 }

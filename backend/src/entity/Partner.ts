@@ -9,7 +9,7 @@ export class Partner{
     name:string;
     @Column()
     tel:string;
-    @Column()
+    @Column({unique:true})
     taxNumber:string;
     @Column()
     address:string;

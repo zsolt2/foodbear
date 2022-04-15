@@ -51,6 +51,7 @@ export class Controller {
 
     update = async (req, res) => {
         const entity = this.repository.create(req.body as {});
+        console.log(entity);
 
         try {
             const existingEntity = await this.repository.findOne(entity.id);

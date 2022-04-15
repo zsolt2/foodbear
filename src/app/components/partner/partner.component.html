@@ -1,9 +1,13 @@
 <div class="d-flex align-items-start">
     <div class="p-2">
-    <h4>Name: {{partner.name}}</h4>
-    <p>Telephone number: {{partner.tel}}</p>
-    <p>Tax number: {{partner.taxNumber}}</p>
-    <p>Address: {{partner.address}}</p>
+        <h4>Name: {{partner.name}}</h4>
+        <p>Id: {{partner.id}}</p>
+        <p>Telephone number: {{partner.tel}}</p>
+        <p>Tax number: {{partner.taxNumber}}</p>
+        <p>Address: {{partner.address}}</p>
     </div>
-    <button class="btn btn-danger p-2">Delete</button>
+    <div class="p-2">
+        <button class="btn btn-danger" (click)="delete()">Delete</button>
+        <button class="btn btn-warning" (click)="modify()">Modify</button>
+    </div>
 </div>

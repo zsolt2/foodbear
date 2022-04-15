@@ -36,15 +36,19 @@
             </div>
             <button type="submit" class="btn btn-block btn-primary mt-2" [disabled]="partnerForm.invalid">Create new
                 partner</button>
-        </form>
+            </form>
+            <button class="btn btn-block btn-warning mt-2" (click)="updatePartner()" [disabled]="partnerForm.invalid || !modifyEnabled">Modify selected</button>
+        
         <div *ngIf="serversideError" class="alert alert-danger" role="alert">
             Registering user failed
         </div>
     </div>
     <div class="p-2">
         <h2>Partners: </h2>
-        <div *ngFor="let partner of partners">
-            <app-partner [partner]="partner"></app-partner>
+        <div *ngFor="let partner of partners, let i = index; trackBy : trackElement" id="{{partner.id}}" class="partner">
+            <app-partner [partner]="partner" 
+            (onDeleted)="deleteParnter(partner)"
+            (onModified)="modifyPartner(partner)"></app-partner>
         </div>
     </div>
 </div>

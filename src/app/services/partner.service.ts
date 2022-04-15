@@ -11,6 +11,7 @@ import { Partner } from '../models/Partner';
   providedIn: 'root'
 })
 export class PartnerService {
+  
 
   constructor(private http: HttpClient) { }
 
@@ -28,6 +29,10 @@ export class PartnerService {
 
   deletePartner(id:number){
     return lastValueFrom(this.http.delete(`/api/partner/${id}`));
+  }
+
+  updatePartner(partner:Partner):Promise<Partner>{
+    return lastValueFrom(this.http.put<Partner>(`/api/partner/${partner.id}`, partner));
   }
 
 }
