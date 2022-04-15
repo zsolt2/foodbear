@@ -5,7 +5,9 @@ import * as express from "express";
 const cors = require('cors')
 const bodyParser = require('body-parser')
 import { connectionOptions } from "../ormconfig";
-import { getRoutes } from "./routes/auth.routes";
+import { getAuthRoutes } from "./routes/auth.routes";
+import { getPartnerRoutes } from "./routes/parter.routes";
+import { getFoodRoutes } from "./routes/food.routes";
 
 createConnection(connectionOptions).then(async connection => {
 
@@ -23,7 +25,9 @@ createConnection(connectionOptions).then(async connection => {
 
     // Serve static resources
     //app.use('/public', express.static('public'))
-    app.use(getRoutes())
+    app.use(getAuthRoutes());
+    app.use(getPartnerRoutes());
+    app.use(getFoodRoutes());
 
     // Express error handling
     // app.use((req, res, next) => {
