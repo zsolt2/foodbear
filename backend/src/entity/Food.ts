@@ -14,6 +14,9 @@ export class Food{
     description:string;
     @Column("text")
     imageUrl:string;
-    @ManyToOne(type => Partner, partner => partner.foods)
+    @ManyToOne(type => Partner, partner => partner.foods,{
+        eager: true,
+        cascade: true
+    })
     partner:Partner;
 }

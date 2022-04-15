@@ -11,6 +11,9 @@ export class Courier{
     capacity:number;
     @Column()
     isAvailable:boolean;
-    @OneToMany(type => Order, order => order.courier)
+    @OneToMany(type => Order, order => order.courier, {
+        eager: true,
+        cascade: true
+    })
     orders:Order[];
 }

@@ -10,9 +10,9 @@ export class Partner{
     @Column()
     tel:string;
     @Column()
-    taxNumber:number;
+    taxNumber:string;
     @Column()
-    adress:string;
+    address:string;
     @OneToMany(type => Food, food => food.partner)
     foods:Food[];
 }

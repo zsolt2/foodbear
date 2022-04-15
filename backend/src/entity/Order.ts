@@ -9,6 +9,7 @@ export class Order{
     @Column()
     name:string;
     @ManyToMany(type => Food, {
+        eager: true,
         cascade: true
     })
     @JoinTable()
