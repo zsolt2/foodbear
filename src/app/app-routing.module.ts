@@ -6,6 +6,7 @@ import { HelloComponent } from './components/hello/hello.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { PartnerDetailsComponent } from './components/partner-details/partner-details.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path:'adduser', component: AddUserComponent, canActivate: [AdminGuard]},
     { path: 'listusers', component: ListUsersComponent, canActivate: [AdminGuard] },
     { path: 'addpartner', component: AddPartnerComponent, canActivate: [AdminGuard] },
+    { path: 'partner/:id', component: PartnerDetailsComponent, canActivate: [AuthGuard] },
   ] },
 ];
 

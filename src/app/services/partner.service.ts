@@ -5,34 +5,37 @@ import {
   HttpClient
 } from '@angular/common/http';
 import { Partner } from '../models/Partner';
+import { BaseService } from './base.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class PartnerService {
+export class PartnerService extends BaseService{
   
 
-  constructor(private http: HttpClient) { }
-
-  createPartner(partner:Partner){
-      return lastValueFrom(this.http.post<Partner>('/api/createpartner', partner));
+  constructor(http:HttpClient) { 
+    super(http, "partner");
   }
 
-  getPartner(id:number){
-    return lastValueFrom(this.http.get<Partner>(`/api/partner/${id}`));
-  }
+  // createPartner(partner:Partner){
+  //     return lastValueFrom(this.http.post<Partner>('/api/createpartner', partner));
+  // }
 
-  getAllPartners(){
-    return lastValueFrom(this.http.get<Partner[]>('/api/partner'));
-  }
+  // getPartner(id:number){
+  //   return lastValueFrom(this.http.get<Partner>(`/api/partner/${id}`));
+  // }
 
-  deletePartner(id:number){
-    return lastValueFrom(this.http.delete(`/api/partner/${id}`));
-  }
+  // getAllPartners(){
+  //   return lastValueFrom(this.http.get<Partner[]>('/api/partner'));
+  // }
 
-  updatePartner(partner:Partner):Promise<Partner>{
-    return lastValueFrom(this.http.put<Partner>(`/api/partner/${partner.id}`, partner));
-  }
+  // deletePartner(id:number){
+  //   return lastValueFrom(this.http.delete(`/api/partner/${id}`));
+  // }
+
+  // updatePartner(partner:Partner):Promise<Partner>{
+  //   return lastValueFrom(this.http.put<Partner>(`/api/partner/${partner.id}`, partner));
+  // }
 
 }

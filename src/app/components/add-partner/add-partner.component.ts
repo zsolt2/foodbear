@@ -28,7 +28,7 @@ export class AddPartnerComponent implements OnInit {
   }
   async ngOnInit(): Promise<void> {
     try{
-      this.partners = await this.partnerService.getAllPartners();
+      this.partners = await this.partnerService.getAll();
     }catch(err){
       
     }
@@ -39,7 +39,7 @@ export class AddPartnerComponent implements OnInit {
       console.log(this.partnerForm.value);
       this.partnerForm.patchValue({id:null});
       console.log(this.partnerForm.value);
-      const newPartner = await this.partnerService.createPartner(this.partnerForm.value);
+      const newPartner = await this.partnerService.create<Partner>(this.partnerForm.value);
       this.serversideError = false;
       this.partners.push(newPartner);
     } catch (err) {
@@ -51,7 +51,7 @@ export class AddPartnerComponent implements OnInit {
   async updatePartner() {
     try{
       console.log('in update',this.partnerForm.value);
-      const updatedPartner = await this.partnerService.updatePartner(this.partnerForm.value);
+      const updatedPartner = await this.partnerService.update<Partner>(this.partnerForm.value);
       this.partners = this.partners.map(p=>p.id===updatedPartner.id?updatedPartner:p);
     }catch(err){
       console.log(err);
@@ -64,7 +64,7 @@ export class AddPartnerComponent implements OnInit {
         this.partnerForm.reset();
         this.modifyEnabled =false;
       }
-      await this.partnerService.deletePartner(parter.id);
+      await this.partnerService.delete(parter.id);
       
       this.partners = this.partners.filter(p=>p.id!==parter.id);
     }catch(err){

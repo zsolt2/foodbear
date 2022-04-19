@@ -5,29 +5,15 @@ import {
   HttpClient
 } from '@angular/common/http';
 import { Food } from '../models/Food';
+import { BaseService } from './base.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class FoodService {
+export class FoodService extends BaseService{
 
-  constructor(private http: HttpClient) { }
-
-  createFood(food:Food){
-      return lastValueFrom(this.http.post<Food>('/api/createfood', food));
+  constructor(http: HttpClient) { 
+    super(http, "food");
   }
-
-  getFood(id:number){
-    return lastValueFrom(this.http.get<Food>(`/api/food/${id}`));
-  }
-
-  getAllFoods(){
-    return lastValueFrom(this.http.get<Food[]>('/api/food'));
-  }
-
-  deleteFood(id:number){
-    return lastValueFrom(this.http.delete(`/api/food/${id}`));
-  }
-
 }

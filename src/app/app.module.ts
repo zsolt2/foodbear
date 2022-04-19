@@ -15,6 +15,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddPartnerComponent } from './components/add-partner/add-partner.component';
 import { PartnerComponent } from './components/partner/partner.component';
+import { PartnerDetailsComponent } from './components/partner-details/partner-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PartnerComponent } from './components/partner/partner.component';
     MainPageComponent,
     AddUserComponent,
     AddPartnerComponent,
-    PartnerComponent
+    PartnerComponent,
+    PartnerDetailsComponent
   ],
   imports: [
     BrowserModule,
