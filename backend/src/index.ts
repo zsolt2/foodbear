@@ -9,6 +9,9 @@ import { getAuthRoutes } from "./routes/auth.routes";
 import { getPartnerRoutes } from "./routes/parter.routes";
 import { getFoodRoutes } from "./routes/food.routes";
 
+
+
+
 createConnection(connectionOptions).then(async connection => {
 
     //const api = require('./routes/auth.routes')
@@ -21,7 +24,7 @@ createConnection(connectionOptions).then(async connection => {
     //     extended: false,
     // }),
     // )
-    app.use(cors())
+     app.use(cors())
 
     // Serve static resources
     //app.use('/public', express.static('public'))
@@ -29,13 +32,15 @@ createConnection(connectionOptions).then(async connection => {
     app.use(getPartnerRoutes());
     app.use(getFoodRoutes());
 
-    // Express error handling
-    // app.use((req, res, next) => {
-    //     setImmediate(() => {
-    //     next(new Error('Something went wrong'))
-    //     })
-    // })
-    
+    //fill();
+
+    //Express error handling
+    app.use((req, res, next) => {
+        setImmediate(() => {
+        next(new Error('Something went wrong'))
+        })
+    })
+
     app.use(function (err, req, res, next) {
         console.error(err.message)
         if (!err.statusCode) err.statusCode = 500
@@ -47,3 +52,4 @@ createConnection(connectionOptions).then(async connection => {
     });
 
 }).catch(error => console.log( "index error" + error));
+
