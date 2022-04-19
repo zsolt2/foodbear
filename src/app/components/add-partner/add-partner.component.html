@@ -1,5 +1,7 @@
-<div class="auth-wrapper d-flex justify-content-around">
-    <div class="p-2">
+<div class="row auth-wrapper justify-content-around">
+    <div class="col-md-4">
+        <div class="sticky-top">
+            
         <form class="form-signin" [formGroup]="partnerForm" (ngSubmit)="addPartner()">
             <h3 class="h3 mb-3 font-weight-normal text-center">Create new partner</h3>
             <div class="form-group">
@@ -42,8 +44,10 @@
         <div *ngIf="serversideError" class="alert alert-danger" role="alert">
             Registering user failed
         </div>
+        hello
+        </div>
     </div>
-    <div class="p-2">
+    <div class="col">
         <h2>Partners: </h2>
         <div *ngFor="let partner of partners, let i = index; trackBy : trackElement" id="{{partner.id}}" class="partner">
             <app-partner [partner]="partner" 
