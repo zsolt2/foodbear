@@ -11,7 +11,7 @@ export function getFoodRoutes(){
     const foodController = new FoodController();
 
     router.get('/api/food', authorizeAdmin, foodController.getAll);
-    router.post('/api/createfood', foodValidator, foodController.create);
+    router.post('/api/createfood', authorizeAdmin,foodValidator, foodController.create);
     router.get('/api/food/:id', authorize, foodController.getOne); 
     router.delete('/api/food/:id',authorizeAdmin, foodController.delete );
     router.put('/api/food/:id',authorizeAdmin, foodController.update );

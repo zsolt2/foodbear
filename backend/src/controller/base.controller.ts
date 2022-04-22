@@ -38,7 +38,7 @@ export class Controller {
 
         try {
             const entity = await this.repository.findOne(entityId);
-
+            
             if (!entity) {
                 return res.status(404).json({ message: 'Entity not found.' });
             }
@@ -51,7 +51,6 @@ export class Controller {
 
     update = async (req, res) => {
         const entity = this.repository.create(req.body as {});
-        console.log(entity);
 
         try {
             const existingEntity = await this.repository.findOne(entity.id);

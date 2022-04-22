@@ -8,6 +8,7 @@ import { connectionOptions } from "../ormconfig";
 import { getAuthRoutes } from "./routes/auth.routes";
 import { getPartnerRoutes } from "./routes/parter.routes";
 import { getFoodRoutes } from "./routes/food.routes";
+import { getOrderRoutes } from "./routes/order.routes";
 
 
 
@@ -31,6 +32,7 @@ createConnection(connectionOptions).then(async connection => {
     app.use(getAuthRoutes());
     app.use(getPartnerRoutes());
     app.use(getFoodRoutes());
+    app.use(getOrderRoutes());
 
     //fill();
 

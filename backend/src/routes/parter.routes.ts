@@ -11,8 +11,8 @@ export function getPartnerRoutes(){
     const partnerController = new PartnerController();
 
     router.get('/api/partner', authorizeAdmin, partnerController.getAll);
-    router.post('/api/createpartner', partnerValidator, partnerController.create);
-    router.get('/api/partner/:id', authorize, partnerController.getOne); 
+    router.post('/api/createpartner', authorizeAdmin,partnerValidator, partnerController.create);
+    router.get('/api/partner/:id', authorize, partnerController.getFullJoined); 
     router.delete('/api/partner/:id',authorizeAdmin, partnerController.delete );
     router.put('/api/partner/:id',authorizeAdmin, partnerController.update );
 
