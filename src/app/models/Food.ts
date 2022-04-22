@@ -10,4 +10,5 @@ export class Food{
     description!:string;
     imageUrl!:string;
     partner!:Partner;
+    orders!:Order[];
 }

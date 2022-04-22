@@ -16,6 +16,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddPartnerComponent } from './components/add-partner/add-partner.component';
 import { PartnerComponent } from './components/partner/partner.component';
 import { PartnerDetailsComponent } from './components/partner-details/partner-details.component';
+import { FoodTableComponent } from './components/food-table/food-table.component';
+import { OrderTableComponent } from './components/order-table/order-table.component';
+import { PartnerListComponent } from './components/partner-list/partner-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { PartnerDetailsComponent } from './components/partner-details/partner-de
     AddUserComponent,
     AddPartnerComponent,
     PartnerComponent,
-    PartnerDetailsComponent
+    PartnerDetailsComponent,
+    FoodTableComponent,
+    OrderTableComponent,
+    PartnerListComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http';
 import { Partner } from '../models/Partner';
 import { BaseService } from './base.service';
+import { Order } from '../models/Order';
 
 
 @Injectable({
@@ -17,6 +18,10 @@ export class PartnerService extends BaseService{
   constructor(http:HttpClient) { 
     super(http, "partner");
   }
+
+  // getOrders(id:number){
+  //   return lastValueFrom(this.http.get<Order>(`/api/partner/${id}/orders`));
+  // }
 
   // createPartner(partner:Partner){
   //     return lastValueFrom(this.http.post<Partner>('/api/createpartner', partner));

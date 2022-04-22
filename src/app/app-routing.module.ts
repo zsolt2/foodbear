@@ -7,6 +7,7 @@ import { ListUsersComponent } from './components/list-users/list-users.component
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { PartnerDetailsComponent } from './components/partner-details/partner-details.component';
+import { PartnerListComponent } from './components/partner-list/partner-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -18,11 +19,14 @@ const routes: Routes = [
   { path: 'hello', component: HelloComponent, canActivate: [AdminGuard] },
   { path: 'mainpage', component: MainPageComponent, canActivate: [AuthGuard], children: [
     { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
-    { path:'adduser', component: AddUserComponent, canActivate: [AdminGuard]},
+    { path: 'adduser', component: AddUserComponent, canActivate: [AdminGuard]},
     { path: 'listusers', component: ListUsersComponent, canActivate: [AdminGuard] },
     { path: 'addpartner', component: AddPartnerComponent, canActivate: [AdminGuard] },
     { path: 'partner/:id', component: PartnerDetailsComponent, canActivate: [AuthGuard] },
+    { path: 'partners', component: PartnerListComponent, canActivate:[AuthGuard]}
   ] },
+
+  { path: '**', redirectTo: '/mainpage'},
 ];
 
 @NgModule({

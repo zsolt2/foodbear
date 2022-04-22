@@ -19,10 +19,10 @@ export class AddPartnerComponent implements OnInit {
     public fb: FormBuilder) {
     this.partnerForm = this.fb.group({
       id!: [null],
-      name!: ['', { validators: [Validators.required, Validators.minLength(3)] }],
-      tel!: ['', { validators: [Validators.required, Validators.pattern(/^\+?[0-9]{4,}$/)] }],
-      taxNumber!: ['', { validators: [Validators.required, Validators.maxLength(11), Validators.minLength(11)] }],
-      address!: ['', { validators: [Validators.required, Validators.minLength(5)] }],
+      name!: ['', {validators:[Validators.required, Validators.minLength(3)] , updateOn: 'blur' }],
+      tel!: ['', {validators:[Validators.required, Validators.pattern(/^\+?[0-9]{4,}$/)] ,updateOn: 'blur' }],
+      taxNumber!: ['', { validators: [Validators.required, Validators.maxLength(11), Validators.minLength(11)],updateOn: 'blur' }],
+      address!: ['', { validators: [Validators.required, Validators.minLength(5)],updateOn: 'blur' }],
       foods!: [[]]
     });
   }
@@ -30,7 +30,7 @@ export class AddPartnerComponent implements OnInit {
     try{
       this.partners = await this.partnerService.getAll();
     }catch(err){
-      
+      console.log(err);
     }
   }
 

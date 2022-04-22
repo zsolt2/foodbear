@@ -4,7 +4,8 @@ import { Food } from "./Food";
 
 export class Order{
     id!:number;
-    name!:string;
+    address!:string;
+    note!:string;
     foods!:Food[];
     courier!:Courier;
 }

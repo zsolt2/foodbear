@@ -9,6 +9,7 @@ import { Partner } from '../../models/Partner';
 export class PartnerComponent implements OnInit {
 
   @Input() partner!: Partner;
+  @Input() buttons!: boolean;
   @Output() onDeleted = new EventEmitter<number>();
   @Output() onModified = new EventEmitter<Partner>();
   

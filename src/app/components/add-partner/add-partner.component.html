@@ -51,7 +51,7 @@
         <h2>Partners: </h2>
         <div *ngFor="let partner of partners, let i = index; trackBy : trackElement" id="{{partner.id}}"
             class="partner">
-            <app-partner [partner]="partner" (onDeleted)="deleteParnter(partner)" (onModified)="modifyPartner(partner)">
+            <app-partner [partner]="partner" [buttons]="true" (onDeleted)="deleteParnter(partner)" (onModified)="modifyPartner(partner)">
             </app-partner>
         </div>
     </div>

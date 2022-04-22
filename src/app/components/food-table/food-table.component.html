@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">price</th>
+        <th scope="col">description</th>
+        <th scope="col">Number of orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let food of foods">
+        <th scope="row">{{food.id}}</th>
+        <td><img [src]="" class="product-img img-fluid" style="max-width: 100px;"></td>
+        <td>{{food.name}}</td>
+        <td>{{food.price}}</td>
+        <td>{{food.description}}</td>
+        <td>{{food.orders.length}}</td>
+      </tr>
+    </tbody>
+  </table>
