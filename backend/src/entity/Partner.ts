@@ -13,6 +13,9 @@ export class Partner{
     taxNumber:string;
     @Column()
     address:string;
-    @OneToMany(type => Food, food => food.partner)
+    @OneToMany(type => Food, food => food.partner,{
+        eager: true,
+        cascade: true,
+    })
     foods:Food[];
 }

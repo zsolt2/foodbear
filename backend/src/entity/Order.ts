@@ -7,12 +7,13 @@ export class Order{
     @PrimaryGeneratedColumn()
     id:number;
     @Column()
-    name:string;
-    @ManyToMany(type => Food, {
+    address:string;
+    @Column()
+    note:string;
+    @ManyToMany(type => Food, food => food.orders,{
         eager: true,
         cascade: true
     })
-    @JoinTable()
     foods:Food[];
     @ManyToOne(type => Courier, courier => courier.orders)
     courier:Courier;

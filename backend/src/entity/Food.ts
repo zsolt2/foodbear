@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Order } from "./Order";
 import { Partner } from "./Partner";
 
@@ -15,8 +15,12 @@ export class Food{
     @Column("text")
     imageUrl:string;
     @ManyToOne(type => Partner, partner => partner.foods,{
-        eager: true,
-        cascade: true
+        //eager: true,
+        //cascade: true
     })
     partner:Partner;
+
+    @ManyToMany(type => Order, order => order.foods)
+    @JoinTable()
+    orders:Order[];
 }
