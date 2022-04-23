@@ -28,13 +28,8 @@ export class Controller {
         }
     }
 
-    getOne = async (req, res) => {
-        let entityId;
-        if(req.params.id){
-            entityId = req.params.id;
-        } else {
-            entityId = req.user.id;
-        }
+    protected getOne =  async (req, res ) => {
+        const entityId = req.params.id;
 
         try {
             const entity = await this.repository.findOne(entityId);

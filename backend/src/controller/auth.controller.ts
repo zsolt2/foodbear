@@ -78,22 +78,27 @@ export class AuthController extends Controller{
         }
     };
 
-    // Modify user
-// router.put('/users', async (req, res) => {
-//     const repository = getRepository(User);
-//     const user = repository.create(req.body as {});
+   
+    getOne = async (req, res) => {
+        let entityId;
+        if(req.params.id){
+            entityId = req.params.id;
+        } else {
+            entityId = req.user.id;
+        }
+        try {
+            const entity = await this.repository.findOne(entityId);
+            
+            if (!entity) {
+                return res.status(404).json({ message: 'Entity not found.' });
+            }
+
+            res.json(entity);
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    }
     
-//     try {
-//         const existingUser = await repository.findOne(user.id);
-//         if (!existingUser) {
-//             return res.status(404).json({ message: 'Not existing user.' });
-//         }
 
-//         const modifiedUser = await repository.save(user);
-//         res.json(modifiedUser);
-//     } catch (err) {
-//         res.status(500).json({ message: err.message });
-//     }
-
-// });
+    
 }

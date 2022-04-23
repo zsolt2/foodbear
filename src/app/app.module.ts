@@ -19,6 +19,7 @@ import { PartnerDetailsComponent } from './components/partner-details/partner-de
 import { FoodTableComponent } from './components/food-table/food-table.component';
 import { OrderTableComponent } from './components/order-table/order-table.component';
 import { PartnerListComponent } from './components/partner-list/partner-list.component';
+import { AddFoodComponent } from './components/add-food/add-food.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PartnerListComponent } from './components/partner-list/partner-list.com
     PartnerDetailsComponent,
     FoodTableComponent,
     OrderTableComponent,
-    PartnerListComponent
+    PartnerListComponent,
+    AddFoodComponent
   ],
   imports: [
     BrowserModule,

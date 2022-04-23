@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddFoodComponent } from './components/add-food/add-food.component';
 import { AddPartnerComponent } from './components/add-partner/add-partner.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { HelloComponent } from './components/hello/hello.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
     { path: 'listusers', component: ListUsersComponent, canActivate: [AdminGuard] },
     { path: 'addpartner', component: AddPartnerComponent, canActivate: [AdminGuard] },
     { path: 'partner/:id', component: PartnerDetailsComponent, canActivate: [AuthGuard] },
-    { path: 'partners', component: PartnerListComponent, canActivate:[AuthGuard]}
+    { path: 'partners', component: PartnerListComponent, canActivate:[AuthGuard]},
+    { path: 'addfood', component: AddFoodComponent, canActivate: [AdminGuard]},
   ] },
 
   { path: '**', redirectTo: '/mainpage'},

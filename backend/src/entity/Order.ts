@@ -7,6 +7,12 @@ export class Order{
     @PrimaryGeneratedColumn()
     id:number;
     @Column()
+    name:string;
+    @Column({type:"datetime"})
+    orderTime:Date;
+    @Column({type:"datetime"})
+    arriveDate:Date;
+    @Column()
     address:string;
     @Column()
     note:string;
