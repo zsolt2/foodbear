@@ -1,0 +1,80 @@
+<div class="row auth-wrapper justify-content-around">
+    <div class="col-md-4">
+        <div class="sticky-top">
+
+            <form class="form-signin" [formGroup]="foodForm" (ngSubmit)="addFood()">
+                <h3 class="h3 mb-3 font-weight-normal text-center">Create new food</h3>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="test" class="form-control" formControlName="name" placeholder="Enter name"
+                        [ngClass]="{ 'is-invalid': foodForm.invalid && (foodForm.dirty ) && foodForm.controls['name'].errors }" />
+                    <span class="invalid-feedback">
+                        Name is not valid
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" class="form-control" formControlName="price" placeholder="Price" min="0"
+                        [ngClass]="{ 'is-invalid': foodForm.invalid && (foodForm.dirty ) && foodForm.controls['price'].errors }" />
+                    <span class="invalid-feedback">
+                        Price is not valid
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" formControlName="description" placeholder="Description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" class="form-control" formControlName="imageUrl" placeholder="Image URL"
+                        [ngClass]="{ 'is-invalid': foodForm.invalid && (foodForm.dirty ) && foodForm.controls['imageUrl'].errors }" />
+                    <span class="invalid-feedback">
+                        URL is not valid
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Partner</label>
+                    <select class="form-control" formControlName="partner">
+                        <option *ngFor="let partner of partners" [value]="partner.id">{{partner.name}}</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-block btn-primary mt-2" [disabled]="foodForm.invalid">Create new
+                    food</button>
+            </form>
+            <button class="btn btn-block btn-warning mt-2" (click)="updateFood()"
+                [disabled]="foodForm.invalid || !modifyEnabled">Modify selected</button>
+
+            <div *ngIf="serversideError" class="alert alert-danger" role="alert">
+                Registering user failed
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <h2>Foods: </h2>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">price</th>
+                <th scope="col">Restaurant</th>
+                <th scope="col">description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let food of foods">
+                <th scope="row">{{food.id}}</th>
+                <td><img [src]="" class="product-img img-fluid" style="max-width: 100px;"></td>
+                <td>{{food.name}}</td>
+                <td>{{food.price}}</td>
+                <td>{{food.partner.name}}</td>
+                <td><p class="description">{{food.description}}</p></td>
+                <td><button class="btn btn-sm btn-danger" (click)="deleteFood(food)">Delete</button>
+                    <button class="btn btn-sm btn-warning" (click)="selectFood(food)">Select</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
