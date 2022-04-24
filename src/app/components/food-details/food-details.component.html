@@ -1,0 +1,34 @@
+<div *ngIf="food">
+    <h1>{{food.name}}</h1>
+    <img [src]="food.imageUrl" class="product-img img-fluid" style="max-width: 100px;">
+    <p>Price:{{food.price}}</p>
+    <h2>Description</h2>
+    <p>{{food.description}}</p>
+    <h2>Restaurant</h2>
+    <p><a routerLink="/mainpage/partner/{{food.partner.id}}">{{food.partner.name}}</a></p>
+    <h2>Number of orders</h2>
+    <p>{{food.orders.length}}</p>
+    <h2>Orders</h2>
+    <!-- <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">User</th>
+                <th scope="col">Date</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Courier</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{order.id}}</td>
+                <td>{{order.user.name}}</td>
+                <td>{{order.date}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.courier.name}}</td>
+            </tr>
+        </tbody>
+    </table> -->
+</div>

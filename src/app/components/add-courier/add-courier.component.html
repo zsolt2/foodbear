@@ -1,0 +1,60 @@
+<div class="row auth-wrapper justify-content-around">
+    <div class="col-md-4">
+        <div class="sticky-top">
+
+            <form class="form-signin" [formGroup]="courierForm" (ngSubmit)="addCourier()">
+                <h3 class="h3 mb-3 font-weight-normal text-center">Create new courier</h3>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="test" class="form-control" formControlName="name" placeholder="Enter name"
+                        [ngClass]="{ 'is-invalid': courierForm.invalid && (courierForm.dirty ) && courierForm.controls['name'].errors }" />
+                    <span class="invalid-feedback">
+                        Name is not valid
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Capacity</label>
+                    <input type="number" class="form-control" formControlName="capacity" placeholder="Capacity" min="0"
+                        [ngClass]="{ 'is-invalid': courierForm.invalid && (courierForm.dirty ) && courierForm.controls['capacity'].errors }" />
+                    <span class="invalid-feedback">
+                        Capacity is not valid
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-block btn-primary mt-2" [disabled]="courierForm.invalid">Create new
+                    courier</button>
+            </form>
+            <button class="btn btn-block btn-warning mt-2" (click)="updateCourier()"
+                [disabled]="courierForm.invalid || !modifyEnabled">Modify selected</button>
+
+            <div *ngIf="serversideError" class="alert alert-danger" role="alert">
+                Registering user failed
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <h2>Couriers: </h2>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Capacity</th>
+                <th scope="col">Available</th>
+                <th scope="col">Number of orders</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let courier of couriers">
+                <th scope="row">{{courier.id}}</th>
+                <td>{{courier.name}}</td>
+                <td>{{courier.capacity}}</td>
+                <td>{{courier.isAvailable}}</td>
+                <td>{{courier.orders.length}}</td>
+                <td><button class="btn btn-sm btn-danger" (click)="deleteCourier(courier)">Delete</button>
+                    <button class="btn btn-sm btn-warning" (click)="selectCourier(courier)">Select</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

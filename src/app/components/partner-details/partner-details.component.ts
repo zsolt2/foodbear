@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Food } from 'src/app/models/Food';
 import { Order } from 'src/app/models/Order';
 import { Partner } from 'src/app/models/Partner';
-import { FoodService } from 'src/app/services/food.service';
 import { OrderService } from 'src/app/services/order.service';
 import { PartnerService } from 'src/app/services/partner.service';
 
@@ -18,7 +17,7 @@ export class PartnerDetailsComponent implements OnInit {
   orders!: Order[];
 
   constructor(private partnerService: PartnerService, private activatedRoute: ActivatedRoute,
-    private foodService: FoodService, private orderService: OrderService) { }
+     private orderService: OrderService) { }
 
   async ngOnInit(): Promise<void> {
 
@@ -31,6 +30,14 @@ export class PartnerDetailsComponent implements OnInit {
     } catch (err) {
       
     }
+  }
+
+  getFoods(): Food[] {
+    let clone = JSON.parse(JSON.stringify(this.partner.foods));
+    clone.forEach((food:Food) => {
+      food.partner = this.partner;
+    })
+    return clone;
   }
 
 }

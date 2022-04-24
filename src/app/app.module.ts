@@ -20,6 +20,9 @@ import { FoodTableComponent } from './components/food-table/food-table.component
 import { OrderTableComponent } from './components/order-table/order-table.component';
 import { PartnerListComponent } from './components/partner-list/partner-list.component';
 import { AddFoodComponent } from './components/add-food/add-food.component';
+import { AddCourierComponent } from './components/add-courier/add-courier.component';
+import { ListFoodsComponent } from './components/list-foods/list-foods.component';
+import { FoodDetailsComponent } from './components/food-details/food-details.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { AddFoodComponent } from './components/add-food/add-food.component';
     FoodTableComponent,
     OrderTableComponent,
     PartnerListComponent,
-    AddFoodComponent
+    AddFoodComponent,
+    AddCourierComponent,
+    ListFoodsComponent,
+    FoodDetailsComponent,
   ],
   imports: [
     BrowserModule,

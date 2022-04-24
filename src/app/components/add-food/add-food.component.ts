@@ -47,6 +47,7 @@ export class AddFoodComponent implements OnInit {
       const result = await this.foodService.create<Food>(this.foodForm.value);
       result.partner = this.partners.find(p=>p.id===<any>result.partner)!;
       this.foods.push(result);
+      this.limitDescription();
     }catch(err){
       console.log(err);
     }

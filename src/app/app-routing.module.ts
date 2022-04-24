@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddCourierComponent } from './components/add-courier/add-courier.component';
 import { AddFoodComponent } from './components/add-food/add-food.component';
 import { AddPartnerComponent } from './components/add-partner/add-partner.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { FoodDetailsComponent } from './components/food-details/food-details.component';
+import { FoodTableComponent } from './components/food-table/food-table.component';
 import { HelloComponent } from './components/hello/hello.component';
+import { ListFoodsComponent } from './components/list-foods/list-foods.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -26,6 +30,9 @@ const routes: Routes = [
     { path: 'partner/:id', component: PartnerDetailsComponent, canActivate: [AuthGuard] },
     { path: 'partners', component: PartnerListComponent, canActivate:[AuthGuard]},
     { path: 'addfood', component: AddFoodComponent, canActivate: [AdminGuard]},
+    { path: 'addcourier', component: AddCourierComponent, canActivate: [AdminGuard]},
+    { path: 'listfoods', component: ListFoodsComponent, canActivate: [AuthGuard]},
+    { path: 'food/:id', component: FoodDetailsComponent, canActivate: [AuthGuard]},
   ] },
 
   { path: '**', redirectTo: '/mainpage'},

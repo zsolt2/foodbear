@@ -11,7 +11,7 @@
     </div>
     <div>
         <h2>Foods associated whith {{partner.name}}</h2>
-        <app-food-table [foods]="partner.foods"></app-food-table>
+        <app-food-table [foods]="getFoods()"></app-food-table>
         <h2>Orders associated whith {{partner.name}}</h2>
         <app-order-table [orders]="orders"></app-order-table>
     </div>
