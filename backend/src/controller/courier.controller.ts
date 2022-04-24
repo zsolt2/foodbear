@@ -11,6 +11,10 @@ export class CourierController extends Controller {
             const entity = await this.repository.createQueryBuilder("courier")
                 .where("courier.id = :id", { id: entityId })
                 .leftJoinAndSelect("courier.orders", "orders")
+                .leftJoin("orders.foods", "foods")
+                .addSelect(["foods.id", "foods.name", "foods.partner"])
+                .leftJoin("foods.partner", "partner")
+                .addSelect(["partner.name", "partner.id"])
                 .getOne();
             
             if (!entity) {

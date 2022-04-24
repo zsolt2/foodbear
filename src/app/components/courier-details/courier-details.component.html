@@ -1,0 +1,12 @@
+<div *ngIf="courier">
+    <ul class="list-group">
+        <li class="list-group-item active">Courier Details</li>
+        <li class="list-group-item">Id: {{courier.id}}</li>
+        <li class="list-group-item">Name: {{courier.name}}</li>
+        <li class="list-group-item">Capacity: {{courier.capacity}}</li>
+        <li class="list-group-item">Is available: {{courier.isAvailable}}</li>
+        <li class="list-group-item">Number of orders: {{courier.orders.length}}</li>
+        <li class="list-group-item">Associated restautants: <span *ngFor="let restaurant of getRestaurants()"><a routerLink="/mainpage/partner/{{restaurant.id}}">{{restaurant.name}} </a></span></li>
+        <li class="list-group-item">Associated foods: <span *ngFor="let food of getFoods()"><a routerLink="/mainpage/food/{{food.id}}">{{food.name}} </a></span></li>
+    </ul>
+</div>

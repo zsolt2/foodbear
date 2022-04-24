@@ -53,28 +53,35 @@
         <h2>Foods: </h2>
         <table class="table table-striped">
             <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Image</th>
-                <th scope="col">Name</th>
-                <th scope="col">price</th>
-                <th scope="col">Restaurant</th>
-                <th scope="col">description</th>
-              </tr>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">price</th>
+                    <th scope="col">Restaurant</th>
+                    <th scope="col">description</th>
+                </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let food of foods">
-                <th scope="row">{{food.id}}</th>
-                <td><img [src]="" class="product-img img-fluid" style="max-width: 100px;"></td>
-                <td>{{food.name}}</td>
-                <td>{{food.price}}</td>
-                <td>{{food.partner.name}}</td>
-                <td><p class="description">{{food.description}}</p></td>
-                <td><button class="btn btn-sm btn-danger" (click)="deleteFood(food)">Delete</button>
-                    <button class="btn btn-sm btn-warning" (click)="selectFood(food)">Select</button>
-                </td>
-              </tr>
+                <tr *ngFor="let food of foods">
+                    <th scope="row">{{food.id}}</th>
+                    <td><img [src]="" class="product-img img-fluid" style="max-width: 100px;"></td>
+                    <td>{{food.name}}</td>
+                    <td>{{food.price}}</td>
+                    <td>{{food.partner.name}}</td>
+                    <td>
+                        <p class="description">{{food.description}}</p>
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-danger" (click)="deleteFood(food)">Delete</button>
+                            <button class="btn btn-sm btn-warning" (click)="selectFood(food)">Select</button>
+                            <button class="btn btn-sm btn-primary"
+                                routerLink="/mainpage/food/{{food.id}}">Select</button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
-          </table>
+        </table>
     </div>
 </div>

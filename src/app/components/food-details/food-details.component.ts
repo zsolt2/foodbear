@@ -12,7 +12,7 @@ export class FoodDetailsComponent implements OnInit {
   @Input() food!: Food;
 
   constructor(private router:Router, private activatedRoute: ActivatedRoute, private foodService: FoodService) { 
-    console.log('valami', this.router.getCurrentNavigation()?.extras.state);
+   this.router.getCurrentNavigation()?.extras.state
   }
 
   async ngOnInit(): Promise<void> {

@@ -4,8 +4,8 @@ import { AddCourierComponent } from './components/add-courier/add-courier.compon
 import { AddFoodComponent } from './components/add-food/add-food.component';
 import { AddPartnerComponent } from './components/add-partner/add-partner.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { CourierDetailsComponent } from './components/courier-details/courier-details.component';
 import { FoodDetailsComponent } from './components/food-details/food-details.component';
-import { FoodTableComponent } from './components/food-table/food-table.component';
 import { HelloComponent } from './components/hello/hello.component';
 import { ListCouriersComponent } from './components/list-couriers/list-couriers.component';
 import { ListFoodsComponent } from './components/list-foods/list-foods.component';
@@ -35,6 +35,7 @@ const routes: Routes = [
     { path: 'listfoods', component: ListFoodsComponent, canActivate: [AuthGuard]},
     { path: 'food/:id', component: FoodDetailsComponent, canActivate: [AuthGuard]},
     { path: 'listcouriers', component: ListCouriersComponent, canActivate: [AuthGuard]},
+    { path: 'courier/:id', component: CourierDetailsComponent, canActivate: [AuthGuard]},
   ] },
 
   { path: '**', redirectTo: '/mainpage'},
