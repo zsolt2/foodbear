@@ -13,7 +13,8 @@ export class OrderController extends Controller{
 
             let result = await this.repository
                 .createQueryBuilder("order")
-                .leftJoin("order.foods", "foods")
+                .leftJoinAndSelect("order.orderToFoods", "orderToFoods")
+                .leftJoin("orderToFoods.food", "foods")
                 .select(["order", "foods.id", "foods.name", "foods.price", "foods.partner"])
                 .leftJoin("foods.partner", "partner")
                 .addSelect("partner.id")

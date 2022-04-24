@@ -17,7 +17,9 @@ export class PartnerController extends Controller {
                 .leftJoinAndSelect("partner.foods", "foods");
            const partialResult = await result.getMany();
             if ( partialResult && partialResult[0].foods.length > 0 ){
-                await result.leftJoinAndSelect("foods.orders", "orders");
+                await result.leftJoinAndSelect("foods.orderToFoods", "orderToFoods")
+                        .leftJoinAndSelect("orderToFoods.order", "order")
+                        .getOne();
             }
             const data = await result.getMany();
             res.json(data[0]);

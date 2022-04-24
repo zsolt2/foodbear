@@ -28,7 +28,7 @@ export class PartnerDetailsComponent implements OnInit {
       this.orders = await this.orderService.getOrderByPartnerId(parseInt(id!));
       console.log(this.partner);
     } catch (err) {
-      
+      console.log(err);
     }
   }
 

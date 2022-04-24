@@ -11,7 +11,8 @@ export class FoodController extends Controller{
             const entity = await this.repository.createQueryBuilder("food")
                 .where("food.id = :id", { id: entityId })
                 .leftJoinAndSelect("food.partner", "partner")
-                .leftJoinAndSelect("food.orders", "orders")
+                .leftJoinAndSelect("food.orderToFoods", "orderToFoods")
+                .leftJoinAndSelect("orderToFoods.order", "order")
                 .getOne();
             
             if (!entity) {
