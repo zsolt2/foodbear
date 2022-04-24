@@ -1,18 +1,16 @@
 <div *ngIf="partner" class=" align-items-start">
     <div class="">
-        <h4>Name: {{partner.name}}</h4>
+        <h1>{{partner.name}}</h1>
         <p>Id: {{partner.id}}</p>
         <p>Telephone number: {{partner.tel}}</p>
         <p>Tax number: {{partner.taxNumber}}</p>
         <p>Address: {{partner.address}}</p>
     </div>
-    <div class="">
-        <button class="btn btn-info" routerLink="/mainpage/partner/{{partner.id}}">Details</button>
-    </div>
+    
     <div>
-        <h2>Foods associated whith {{partner.name}}</h2>
+        <h2>Foods available in {{partner.name}}</h2>
         <app-food-table [foods]="getFoods()"></app-food-table>
-        <h2>Orders associated whith {{partner.name}}</h2>
+        <h2>Orders from {{partner.name}}</h2>
         <app-order-table [orders]="orders"></app-order-table>
     </div>
 </div>

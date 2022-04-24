@@ -9,4 +9,6 @@
         <li class="list-group-item">Associated restautants: <span *ngFor="let restaurant of getRestaurants()"><a routerLink="/mainpage/partner/{{restaurant.id}}">{{restaurant.name}} </a></span></li>
         <li class="list-group-item">Associated foods: <span *ngFor="let food of getFoods()"><a routerLink="/mainpage/food/{{food.id}}">{{food.name}} </a></span></li>
     </ul>
+    <h2>Orders</h2>
+    <app-order-table [orders]="getOrders()"></app-order-table>
 </div>

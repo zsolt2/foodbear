@@ -1,8 +1,6 @@
-<p>partner-list works!</p>
-<div *ngIf="partners" class="col">
-    <h2>Partners: </h2>
-    <div *ngFor="let partner of partners, let i = index; " id="{{partner.id}}"
-        class="partner">
+<h2>Partners: </h2>
+<div *ngIf="partners" class="card-deck row row-cols-4">
+    <div *ngFor="let partner of partners">
         <app-partner [partner]="partner" ></app-partner>
     </div>
 </div>

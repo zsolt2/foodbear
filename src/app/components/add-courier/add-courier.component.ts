@@ -25,7 +25,7 @@ export class AddCourierComponent implements OnInit {
       id!: [null],
       name!: ['', {validators:[Validators.required, Validators.minLength(3)] , updateOn: 'blur' }],
       capacity!: ['', {validators:[Validators.required, Validators.min(0)] ,updateOn: 'blur' }],
-      isAvailable!: ['true'],
+      isAvailable!: [true],
       orders!: [],
       });
   }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Courier } from 'src/app/models/Courier';
 import { Food } from 'src/app/models/Food';
+import { Order } from 'src/app/models/Order';
 import { Partner } from 'src/app/models/Partner';
 import { CourierService } from 'src/app/services/courier.service';
 
@@ -48,6 +49,16 @@ export class CourierDetailsComponent implements OnInit {
       })
     })
     return foods;
+  }
+  
+  getOrders(): Order[]{
+    let orders:Order[] = this.courier.orders;
+    orders.forEach(order => {
+      order.courier = new Courier();
+      order.courier.name=this.courier.name;
+      order.courier.id = this.courier.id;
+    });
+    return orders;
   }
 
 }

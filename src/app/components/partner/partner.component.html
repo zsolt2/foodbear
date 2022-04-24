@@ -1,14 +1,18 @@
-<div class="row align-items-start">
-    <div class="col-md-5">
-        <h4>Name: {{partner.name}}</h4>
-        <p>Id: {{partner.id}}</p>
-        <p>Telephone number: {{partner.tel}}</p>
-        <p>Tax number: {{partner.taxNumber}}</p>
-        <p>Address: {{partner.address}}</p>
+<div class="card mt-3">
+    <div class="card-header text-white" style="background-color: #0d6efd;">
+        {{partner.name}}
     </div>
-    <div class="col-md-6 text-right">
-        <button *ngIf="buttons" class="btn btn-danger" (click)="delete()">Delete</button>
-        <button *ngIf="buttons" class="btn btn-warning" (click)="modify()">Select</button>
-        <button class="btn btn-info" routerLink="/mainpage/partner/{{partner.id}}">Details</button>
-    </div>
+    <ul class="list-group">
+        <li class="list-group-item">Id: {{ partner.id }}</li>
+        <li class="list-group-item">Telephone number: {{partner.tel}}</li>
+        <li class="list-group-item">Tax number: {{partner.taxNumber}}</li>
+        <li class="list-group-item">Address: {{partner.address}}</li>
+        <li class="list-group-item">
+            <div class="btn-group" role="group">
+                <button *ngIf="buttons" class="btn btn-danger" (click)="delete()">Delete</button>
+                <button *ngIf="buttons" class="btn btn-warning" (click)="modify()">Select</button>
+                <button class="btn btn-info" routerLink="/mainpage/partner/{{partner.id}}">Details</button>
+            </div>
+        </li>
+    </ul>
 </div>

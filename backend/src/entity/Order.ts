@@ -11,7 +11,7 @@ export class Order{
     @Column({type:"datetime"})
     orderTime:Date;
     @Column({type:"datetime"})
-    arriveDate:Date;
+    deliveryTime:Date;
     @Column()
     address:string;
     @Column()

@@ -7,6 +7,8 @@
         <th scope="col">Foods</th>
         <th scope="col">FullPrice</th>
         <th scope="col">Courier</th>
+        <th scope="col">Order time</th>
+        <th scope="col">Delivery time</th>
       </tr>
     </thead>
     <tbody>
@@ -14,9 +16,11 @@
         <td>{{order.id}}</td>
         <td>{{order.address}}</td>
         <td>{{order.note}}</td>
-        <td>{{getFoods(order)}}</td>
+        <td><span *ngFor="let food of order.foods"><a routerLink="/mainpage/food/{{food.id}}" >{{food.name}} </a></span></td>
         <td>{{getFullPrice(order)}}</td>
-        <td>{{order.courier.name}}</td>
+        <td><a routerLink="/mainpage/courier/{{order.courier.id}}">{{order.courier.name}}</a></td>
+        <td>{{order.orderTime}}</td>
+        <td>{{order.deliveryTime}}</td>
       </tr>
     </tbody>
   </table>

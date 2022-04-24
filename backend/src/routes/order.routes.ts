@@ -16,6 +16,7 @@ export function getOrderRoutes(){
     router.delete('/api/order/:id',authorizeAdmin, orderController.delete );
     router.put('/api/order/:id',authorizeAdmin, orderController.update );
     router.get('/api/order/partner/:id', authorize, orderController.getOrdersByPartnerId);
+    router.get('/api/order/food/:id', authorize, orderController.getOrderByFoodId);
 
     return router;
 }

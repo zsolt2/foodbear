@@ -15,17 +15,10 @@ export class OrderTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getFoods(order:Order):string{
-    let foods = ''
-    order.foods.forEach(food => {
-      foods += food.name + '\n'
-    });
-    return foods
-  }
-
   getFullPrice(order:Order):number{
     let price = 0
     order.foods.forEach(food => {
+      console.log(food)
       price += food.price
     });
     return price

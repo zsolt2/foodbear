@@ -26,6 +26,7 @@ import { FoodDetailsComponent } from './components/food-details/food-details.com
 import { ListCouriersComponent } from './components/list-couriers/list-couriers.component';
 import { CourierTableComponent } from './components/courier-table/courier-table.component';
 import { CourierDetailsComponent } from './components/courier-details/courier-details.component';
+import { MakeOrderComponent } from './components/make-order/make-order.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CourierDetailsComponent } from './components/courier-details/courier-de
     ListCouriersComponent,
     CourierTableComponent,
     CourierDetailsComponent,
+    MakeOrderComponent,
   ],
   imports: [
     BrowserModule,

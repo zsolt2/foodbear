@@ -1,6 +1,6 @@
 <div class="auth-wrapper col-md-4">
     <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="addUser()">
-        <h3 class="h3 mb-3 font-weight-normal text-center">Please sign in</h3>
+        <h3 class="h3 mb-3 font-weight-normal text-center">Register new user</h3>
         <div class="form-group">
             <label>Name</label>
             <input type="test" class="form-control" formControlName="name" placeholder="Enter name"
@@ -52,7 +52,7 @@
           Password is required.
         </div>
       </div> -->
-        <button type="submit" class="btn btn-block btn-primary" [disabled]="registerForm.invalid">Register user</button>
+        <button type="submit" class="btn btn-block btn-primary m-3" [disabled]="registerForm.invalid">Register user</button>
     </form>
     <div *ngIf="serversideError" class="alert alert-danger" role="alert">
         Registering user failed

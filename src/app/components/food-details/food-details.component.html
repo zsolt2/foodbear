@@ -1,7 +1,8 @@
 <div *ngIf="food">
     <h1>{{food.name}}</h1>
     <img [src]="food.imageUrl" class="product-img img-fluid" style="max-width: 100px;">
-    <p>Price:{{food.price}}</p>
+    <h2>Price</h2>
+    <p>{{food.price}}</p>
     <h2>Description</h2>
     <p>{{food.description}}</p>
     <h2>Restaurant</h2>
@@ -9,6 +10,7 @@
     <h2>Number of orders</h2>
     <p>{{food.orders.length}}</p>
     <h2>Orders</h2>
+    <app-order-table *ngIf="orders" [orders]="orders"></app-order-table>
     <!-- <table class="table table-striped">
         <thead>
             <tr>

@@ -16,5 +16,12 @@ export class OrderService extends BaseService{
   getOrderByPartnerId(partnerId:number){
     return lastValueFrom(this.http.get<Order[]>(`/api/order/partner/${partnerId}`));
   }
+
+  async getCourierByFoodId(foodId:number):Promise<Order[]>{
+    
+    return await lastValueFrom(this.http.get<Order[]>(`api/order/food/${foodId}`));
+
+
+}
   
 }
