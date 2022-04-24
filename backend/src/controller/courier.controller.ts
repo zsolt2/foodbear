@@ -1,17 +1,16 @@
 import { getRepository, Repository } from "typeorm";
 import { Controller } from "./base.controller";
-import { Food } from "../entity/Food";
+import { Courier } from "../entity/Courier";
 
-export class FoodController extends Controller{
-    repository: Repository<Food> = getRepository("Food");
+export class CourierController extends Controller {
+    repository: Repository<Courier> = getRepository("Courier");
     getOne = async (req, res) => {
         const entityId = req.params.id;
 
         try {
-            const entity = await this.repository.createQueryBuilder("food")
-                .where("food.id = :id", { id: entityId })
-                .leftJoinAndSelect("food.partner", "partner")
-                .leftJoinAndSelect("food.orders", "orders")
+            const entity = await this.repository.createQueryBuilder("courier")
+                .where("courier.id = :id", { id: entityId })
+                .leftJoinAndSelect("courier.orders", "orders")
                 .getOne();
             
             if (!entity) {
@@ -25,9 +24,8 @@ export class FoodController extends Controller{
     }
     getAll = async (req, res) => {
         try {
-            const entities = await this.repository.createQueryBuilder("food")
-            .leftJoinAndSelect("food.partner", "partner")
-            .leftJoinAndSelect("food.orders", "orders")
+            const entities = await this.repository.createQueryBuilder("courier")
+            .leftJoinAndSelect("courier.orders", "orders")
             .getMany();
             res.json(entities);
         } catch (err) {

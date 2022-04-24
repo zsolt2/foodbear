@@ -15,10 +15,9 @@ export class PartnerController extends Controller {
                 .createQueryBuilder("partner")
                 .where("partner.id = :id", { id: partnerId })
                 .leftJoinAndSelect("partner.foods", "foods");
-            
            const partialResult = await result.getMany();
             if ( partialResult && partialResult[0].foods.length > 0 ){
-                result.leftJoinAndSelect("foods.orders", "orders");
+                await result.leftJoinAndSelect("foods.orders", "orders");
             }
             const data = await result.getMany();
             res.json(data[0]);

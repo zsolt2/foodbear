@@ -9,6 +9,7 @@ import { getAuthRoutes } from "./routes/auth.routes";
 import { getPartnerRoutes } from "./routes/parter.routes";
 import { getFoodRoutes } from "./routes/food.routes";
 import { getOrderRoutes } from "./routes/order.routes";
+import { getCourierRoutes } from "./routes/courier.routes";
 
 
 
@@ -33,6 +34,7 @@ createConnection(connectionOptions).then(async connection => {
     app.use(getPartnerRoutes());
     app.use(getFoodRoutes());
     app.use(getOrderRoutes());
+    app.use(getCourierRoutes());
 
     //fill();
 
@@ -49,8 +51,8 @@ createConnection(connectionOptions).then(async connection => {
         res.status(err.statusCode).send(err.message)
     })
   
-    app.listen(3000, () => {
-        console.log('Server listening on :3000 ...');
+    app.listen(3001, () => {
+        console.log('Server listening on :3001 ...');
     });
 
 }).catch(error => console.log( "index error" + error));

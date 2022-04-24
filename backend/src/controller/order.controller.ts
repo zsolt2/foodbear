@@ -28,7 +28,7 @@ export class OrderController extends Controller{
                     message: "No orders found"
                 });
             }
-            console.log("partnerelkwarj" , result[0].foods[0].partner);
+            //console.log("partnerelkwarj" , result[0].foods[0].partner);
             console.log(result[0])
             res.json(result);
         } catch (err) {
