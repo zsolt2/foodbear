@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Is available</th>
+        <th scope="col">Number of orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let courier of couriers">
+        <th scope="row">{{courier.id}}</th>
+        <td>{{courier.name}}</td>
+        <td>{{courier.capacity}}</td>
+        <td>{{courier.isAvailable}}</td>
+        <td>{{courier.orders.length}}</td>
+        <td><button class="btn btn-primary" routerLink="/mainpage/courier/{{courier.id}}" [state]="{courier:courier}">Details</button></td>
+      </tr>
+    </tbody>
+  </table>
+

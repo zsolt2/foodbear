@@ -7,7 +7,7 @@ import { User } from '../models/User';
 })
 
 export class UserService {
-  endpoint: string = 'http://localhost:3000/api';
+  
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -15,7 +15,7 @@ export class UserService {
   // Get all users from the API
  public async getUsers():Promise<User[]>{
   return new Promise((resolve, reject) => {
-    this.http.get<User[]>(`${this.endpoint}/users`).subscribe((res: any) => {
+    this.http.get<User[]>(`/api/users`).subscribe((res: any) => {
       return resolve(res);
      })
     });

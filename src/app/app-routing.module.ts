@@ -7,6 +7,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { FoodDetailsComponent } from './components/food-details/food-details.component';
 import { FoodTableComponent } from './components/food-table/food-table.component';
 import { HelloComponent } from './components/hello/hello.component';
+import { ListCouriersComponent } from './components/list-couriers/list-couriers.component';
 import { ListFoodsComponent } from './components/list-foods/list-foods.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
     { path: 'addcourier', component: AddCourierComponent, canActivate: [AdminGuard]},
     { path: 'listfoods', component: ListFoodsComponent, canActivate: [AuthGuard]},
     { path: 'food/:id', component: FoodDetailsComponent, canActivate: [AuthGuard]},
+    { path: 'listcouriers', component: ListCouriersComponent, canActivate: [AuthGuard]},
   ] },
 
   { path: '**', redirectTo: '/mainpage'},
