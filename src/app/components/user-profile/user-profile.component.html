@@ -1,10 +1,13 @@
-<div *ngIf="user">
-    <h1>Profile</h1>
-    <div>
-      <p>Name: {{ user.name }}</p>
-      <p>Email: {{ user.email }}</p>
-      <p *ngIf="user.isAdmin==true">Admin user</p>
-      <p *ngIf="user.isAdmin==false">Not an Admin user</p>
-    </div>
-    <button class="btn btn-sm btn-danger" (click)="deleteUser()">Delete</button>
+
+<div *ngIf="user" class="card mt-3">
+  <div class="card-header text-white" style="background-color: #0d6efd;">
+    Profile
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">Name: {{ user.name }}</li>
+    <li class="list-group-item">Email: {{ user.email }}</li>
+    <li class="list-group-item" *ngIf="user.isAdmin" >Admin user</li>
+    <li class="list-group-item" *ngIf="!user.isAdmin" >Not an sdmin user</li>
+    <li class="list-group-item"><button class="btn btn-sm btn-danger" (click)="deleteUser()">Delete</button></li>
+  </ul>
 </div>
