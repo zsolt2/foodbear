@@ -23,8 +23,8 @@ export class AddCourierComponent implements OnInit {
     private partnerService: PartnerService) {
     this.courierForm = this.fb.group({
       id!: [null],
-      name!: ['', {validators:[Validators.required, Validators.minLength(3)] , updateOn: 'blur' }],
-      capacity!: ['', {validators:[Validators.required, Validators.min(0)] ,updateOn: 'blur' }],
+      name!: ['', {validators:[Validators.required, Validators.minLength(3)] }],
+      capacity!: ['', {validators:[Validators.required, Validators.min(0)]}],
       isAvailable!: [true],
       orders!: [],
       });
