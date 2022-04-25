@@ -74,7 +74,7 @@ export class MakeOrderComponent implements OnInit {
     
     try{
       const returnedOrder = await this.orderService.create(newOrder);
-      
+      window.alert('Order created');
     }catch(err){
       console.log(err);
     }

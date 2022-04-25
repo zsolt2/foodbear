@@ -66,7 +66,7 @@ export class AddCourierComponent implements OnInit {
       await this.courierService.delete(courier.id);
       this.couriers = this.couriers.filter(f=>f.id!=courier.id);
     }catch(err){
-      console.log(err);
+      window.alert('Courier can not be deleted, because it has orders');
     }
   }
 

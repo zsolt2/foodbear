@@ -1,1 +1,41 @@
-<p>order-details works!</p>
+<div *ngIf="order">
+    <ul class="list-group">
+        <li class="list-group-item active">Order Details</li>
+        <li class="list-group-item">Id: {{order.id}}</li>
+        <li class="list-group-item">Name: {{order.name}}</li>
+        <li class="list-group-item">Capacity: {{order.address}}</li>
+        <li class="list-group-item">Is delivered: {{order.delivered}}</li>
+        <li class="list-group-item">Order time: {{order.orderTime}}</li>
+        <li class="list-group-item">Delivery time: {{order.deliveryTime}}</li>
+        <li class="list-group-item">Courier: <a routerLink="/mainpage/courier/{{order.courier.id}}">{{order.courier.name}}</a></li>
+        <li class="list-group-item">Associated restautants: <span *ngFor="let restaurant of getRestaurants()"><a routerLink="/mainpage/partner/{{restaurant.id}}">{{restaurant.name}} </a></span></li>
+        </ul>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">FullPrice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let food of order.orderToFoods">
+            <th scope="row"><a routerLink="/mainpage/food/{{food.food.id}}">{{food.food.name}} </a></th>
+            <td>{{food.food.price}}</td>
+            <td>{{food.amount}}</td>
+            <td>{{food.food.price * food.amount}}</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td>FullPrice:</td>
+            <td>{{getFullPrice()}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <td><div class="btn-group" role="group">
+        <button type="button" class="btn btn-sm btn-warning" (click)="deliverOrder(order.id)" [disabled]="order.delivered">Deliver</button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="deleteOrder(order.id)">Delete</button>
+    </div></td>
+</div>

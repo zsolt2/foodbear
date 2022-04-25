@@ -96,8 +96,11 @@ export class OrderController extends Controller{
                 .leftJoinAndSelect("order.orderToFoods", "orderToFoods")
                 .leftJoin("orderToFoods.food", "foods")
                 .addSelect(["foods.id", "foods.name", "foods.price", "foods.partner"])
+                .leftJoin("foods.partner", "partner")
+                .addSelect(["partner.id", "partner.name"])
                 .leftJoinAndSelect("order.courier", "courier")
                 .getOne();
+            console.log(result.orderToFoods[0].food);
             if(!result){
                 return res.status(404).json({
                     message: "No orders found"
