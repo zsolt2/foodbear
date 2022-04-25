@@ -6,7 +6,7 @@
 
 Run `docker-compose up` to start the *angular* frontend server, *express* backend server, *mysql* database, and *phpmyadmin* admin interface. 
 
-Or you could run the services separatelly without docker-compose.
+Or you would like to run the services separatelly without docker-compose.
  - Start frontend server: `npm run start`
  - Start backend server: `npm run backend`
  - Make sure to import the [database dump](./dbdump/dbdump.sql)
