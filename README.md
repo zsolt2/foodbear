@@ -30,6 +30,7 @@ Regural user can not access ceartain frontend pages, and can not access ceartan 
 ## Used technologies
 
 - [Angular](https://angular.io/)
+- [Typeorm](https://typeorm.io/)
 - [Express](https://expressjs.com/)
 - [MySQL](https://mariadb.com/)
 - [PHPMyAdmin](https://www.phpmyadmin.net/)
