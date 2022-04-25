@@ -40,5 +40,5 @@ Regural user can not access ceartain frontend pages, and can not access ceartan 
 - [JWT](https://jwt.io/)
 - [Bootstrap](https://getbootstrap.com/)
 - [Postman](https://www.getpostman.com/)
-
+- Pictures and dummy data privided by: [themealdb](https://www.themealdb.com/api.php?ref=apilist.fun)
  
