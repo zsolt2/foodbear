@@ -12,9 +12,9 @@ import { getCourierRoutes } from "./routes/courier.routes";
 
 
 
-
+console.log('hsot', process.env.MYSQL_HOST);
 createConnection(connectionOptions).then(async connection => {
-
+    
     // Express settings
     const app = express()
      app.use(cors())
@@ -41,9 +41,9 @@ createConnection(connectionOptions).then(async connection => {
         if (!err.statusCode) err.statusCode = 500
         res.status(err.statusCode).send(err.message)
     })
-  
-    app.listen(3001, () => {
-        console.log('Server listening on :3001 ...');
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        console.log(`Server listening on :${port} ...`);
     });
 
 }).catch(error => console.log( "index error" + error));

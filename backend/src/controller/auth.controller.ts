@@ -2,6 +2,7 @@ import { getRepository, Repository} from "typeorm";
 import { User } from "../entity/User";
 import { validationResult } from "express-validator";
 import { Controller } from "./base.controller";
+import { secret } from "../secret";
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -31,7 +32,7 @@ export class AuthController extends Controller{
                 email: user.email,
                 id: user.id,
                 isAdmin: user.isAdmin
-                },'longersecretisbetter',
+                },secret,
                 {
                     expiresIn: '1h'
                 });

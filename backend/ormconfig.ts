@@ -2,13 +2,13 @@ import { ConnectionOptions } from 'typeorm';
 
 const connectionOptions: ConnectionOptions = {
     type: 'mysql',
-    host: process.env.MYSQL_HSOT || 'localhost',
-    port: 3306,
-    username: 'root',
-    password: 'root',
-    database: 'foodbear',
+    host: process.env.MYSQL_HOST || 'localhost',
+    port: Number(process.env.MYSQL_PORT) || 3306,
+    username: process.env.MYSQL_USERNAME || 'root',
+    password: process.env.MYSQL_PASSWORD || 'root',
+    database: process.env.MYSQL_DATABASE || 'foodbear',
     synchronize: true,
-    logging: true,
+    logging: false,
     entities: [
        'src/entity/**/*.ts'
     ],
