@@ -11,7 +11,7 @@ export function getOrderRoutes(){
     const orderController = new OrderController();
 
     router.get('/api/order', authorize, orderController.getAll);
-    router.post('/api/createorder', authorize,orderValidator, orderController.create);
+    router.post('/api/createorder', authorize, orderController.create);
     router.get('/api/order/:id', authorize, orderController.getOne); 
     router.delete('/api/order/:id',authorize, orderController.delete );
     router.put('/api/order/:id',authorize, orderController.update );
