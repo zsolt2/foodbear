@@ -20,19 +20,6 @@ export class OrderController extends Controller{
                 .where("foods.partner = :id", { id: partnerId })
                 .getMany();
 
-            // let result = await this.repository
-            //     .createQueryBuilder("order")
-            //     .leftJoinAndSelect("order.orderToFoods", "orderToFoods")
-            //     .leftJoin("orderToFoods.food", "foods")
-            //     .select(["order", "foods.id", "foods.name", "foods.price", "foods.partner"])
-            //     .leftJoin("foods.partner", "partner")
-            //     .addSelect("partner.id")
-            //     .where("partner.id = :id", { id: partnerId })
-            //     .leftJoin("order.courier", "courier")
-            //     .addSelect(["courier.id", "courier.name"])
-            //     //.where("order.partner = :partnerId", { partnerId })
-            //     //.leftJoinAndSelect("foods.partner", "partner")
-            //     .getMany();
             if(!result){
                 return res.status(404).json({
                     message: "No orders found"
@@ -173,7 +160,6 @@ export class OrderController extends Controller{
             order.orderTime = new Date();
             //save the order
             let result = await this.repository.save(order);
-            //update the courier, set it to unavailable
             courier.isAvailable = false;
             await courierRepository.save(courier);
             if(!result){

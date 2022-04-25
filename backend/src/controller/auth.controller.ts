@@ -1,7 +1,5 @@
 import { getRepository, Repository} from "typeorm";
 import { User } from "../entity/User";
-//import { jwt } from "jsonwebtoken";
-//import { bcrypt } from "bcrypt";
 import { validationResult } from "express-validator";
 import { Controller } from "./base.controller";
 

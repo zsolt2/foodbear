@@ -14,10 +14,6 @@ export class FoodController extends Controller{
                 .leftJoinAndSelect("food.orderToFoods", "orderToFoods")
                 .leftJoinAndSelect("orderToFoods.order", "order")
                 .getOne();
-            // const entity = await this.repository.findOne({
-            //     where: { id: entityId },
-            //     relations: ["partner", "orderToFoods", "orderToFoods.order"]
-            // });
             
             if (!entity) {
                 return res.status(404).json({ message: 'Entity not found.' });

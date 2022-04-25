@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import * as express from "express";
-//const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 import { connectionOptions } from "../ormconfig";
@@ -16,20 +15,11 @@ import { getCourierRoutes } from "./routes/courier.routes";
 
 createConnection(connectionOptions).then(async connection => {
 
-    //const api = require('./routes/auth.routes')
-
     // Express settings
     const app = express()
-    app.use(express.json())
-    // app.use(
-    // bodyParser.urlencoded({
-    //     extended: false,
-    // }),
-    // )
      app.use(cors())
 
     // Serve static resources
-    //app.use('/public', express.static('public'))
     app.use(getAuthRoutes());
     app.use(getPartnerRoutes());
     app.use(getFoodRoutes());

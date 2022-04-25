@@ -73,12 +73,10 @@ export class AddPartnerComponent implements OnInit {
   }
 
   modifyPartner(partner:Partner){
-    //partner.id = null;
     this.modifyEnabled = true;
     const classes = ["selected","border","border-warning", "rounded", "border-3"];
     this.partnerForm.patchValue(partner);
     document.querySelector('.selected')?.classList.remove(...classes);
-    //document.querySelectorAll('.partner').forEach(p=>p.classList.remove(classes));
     let selected = document.getElementById(partner.id.toString());
     console.log(selected);
     selected?.classList.add(...classes);

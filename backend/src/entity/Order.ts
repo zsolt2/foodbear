@@ -17,11 +17,7 @@ export class Order{
     address:string;
     @Column()
     note:string;
-    // @ManyToMany(type => Food, food => food.orders,{
-    //     eager: true,
-    //     cascade: true
-    // })
-    // foods:Food[];
+  
     @ManyToOne(type => Courier, courier => courier.orders)
     courier:Courier;
     @OneToMany(type => OrderToFood, orderToFood => orderToFood.order, {

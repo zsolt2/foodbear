@@ -21,9 +21,6 @@ export class Food{
     })
     partner:Partner;
 
-    // @ManyToMany(type => Order, order => order.foods)
-    // @JoinTable()
-    // orders:Order[];
     @OneToMany(type => OrderToFood, orderToFood => orderToFood.food)
     orderToFoods: OrderToFood[];
 }
