@@ -26,8 +26,7 @@ export class PartnerDetailsComponent implements OnInit {
       const id = this.activatedRoute.snapshot.paramMap.get('id');
       this.partner = await this.partnerService.get(parseInt(id!));
       this.orders = await this.orderService.getOrderByPartnerId(parseInt(id!));
-      console.log("orders", this.orders);
-      console.log(this.partner);
+      
     } catch (err) {
       console.log(err);
     }

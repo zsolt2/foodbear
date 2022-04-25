@@ -15,7 +15,7 @@ export class ListUsersComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.users = await this.userService.getUsers();
-    console.log(this.users);
+    
   }
 
   removeUser(user: User){

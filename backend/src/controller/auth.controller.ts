@@ -10,7 +10,6 @@ export class AuthController extends Controller{
     repository = getRepository(User);
 
     login = async (req, res, next)=>{
-        console.log(req.body);
         const email = req.body.email;
         try{
             const user = await this.repository.findOne({where:{email:email}});
@@ -43,7 +42,6 @@ export class AuthController extends Controller{
                 id: user.id,
             });
         }catch(err){
-            console.log("login error" + err);
             res.status(500).json({
                 message: err.message
             });
@@ -62,14 +60,12 @@ export class AuthController extends Controller{
 
     isAdmin=async (req, res,next)=> {
         const userId = req.user.id;
-        console.log("isadmin user id " + userId);
         try {
             const user = await this.repository.findOne(userId);
     
             if (!user) {
                 return res.status(404).json({ message: 'User not found.' });
             }
-            console.log('data from db:' + user.isAdmin);
             res.status(200).json(user.isAdmin);
         } catch (err) {
             res.status(500).json({ message: err.message });

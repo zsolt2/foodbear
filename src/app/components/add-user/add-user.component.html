@@ -40,18 +40,6 @@
                 <option value="false">User</option>
             </select>
         </div>
-        <!-- <div *ngIf="registerForm.invalid && (registerForm.dirty || registerForm.touched)" class="alert alert-danger" role="alert">
-        Hiba
-        <div *ngIf="registerForm.controls['email'].errors?.['required']">
-          Email is required.
-        </div>
-        <div *ngIf="!registerForm.controls['email'].errors?.['required'] &&registerForm.controls['email'].errors?.['email']">
-          The email is not valid.
-        </div>
-        <div *ngIf="registerForm.controls['password'].errors?.['required']">
-          Password is required.
-        </div>
-      </div> -->
         <button type="submit" class="btn btn-block btn-primary m-3" [disabled]="registerForm.invalid">Register user</button>
     </form>
     <div *ngIf="serversideError" class="alert alert-danger" role="alert">

@@ -6,7 +6,6 @@ import { AddPartnerComponent } from './components/add-partner/add-partner.compon
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { CourierDetailsComponent } from './components/courier-details/courier-details.component';
 import { FoodDetailsComponent } from './components/food-details/food-details.component';
-import { HelloComponent } from './components/hello/hello.component';
 import { ListCouriersComponent } from './components/list-couriers/list-couriers.component';
 import { ListFoodsComponent } from './components/list-foods/list-foods.component';
 import { ListOrdersComponent } from './components/list-orders/list-orders.component';
@@ -22,10 +21,9 @@ import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/mainpage', pathMatch: 'full'},
+  { path: '', redirectTo: '/mainpage/makeorder', pathMatch: 'full'},
   { path: 'login', component: LoginpageComponent},
-  { path: 'hello', component: HelloComponent, canActivate: [AdminGuard] },
-  { path: 'mainpage', component: MainPageComponent, canActivate: [AuthGuard], children: [
+  { path: 'mainpage',component: MainPageComponent, canActivate: [AuthGuard], children: [
     { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: 'adduser', component: AddUserComponent, canActivate: [AdminGuard]},
     { path: 'listusers', component: ListUsersComponent, canActivate: [AdminGuard] },
@@ -43,7 +41,7 @@ const routes: Routes = [
     { path: 'makeorder', component: MakeOrderComponent, canActivate: [AuthGuard]},
   ] },
 
-  { path: '**', redirectTo: '/mainpage'},
+  { path: '**', redirectTo: '/mainpage/makeorder'},
 ];
 
 @NgModule({

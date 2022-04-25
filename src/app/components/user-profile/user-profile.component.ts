@@ -20,7 +20,6 @@ export class UserProfileComponent implements OnInit {
 
   async deleteUser(){
     try{
-      console.log("user deleted")
       await this.authService.deleteUser(this.user.id);
       this.onUserDeleted.emit();
       // ToDo: fix when know how to throw error 

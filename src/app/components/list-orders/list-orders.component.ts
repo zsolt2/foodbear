@@ -15,7 +15,7 @@ export class ListOrdersComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try{
       this.orders = await this.orderService.getAll<Order>();
-      console.log("orders", this.orders);
+      
     }catch(err){
       console.log(err);
     }

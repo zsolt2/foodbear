@@ -54,10 +54,8 @@ export class AddCourierComponent implements OnInit {
 
   async updateCourier(){
     try{
-      console.log(this.courierForm.value);
       const result = await this.courierService.update<Courier>(this.courierForm.value);
       this.couriers = this.couriers.map(f=>f.id===result.id?result:f);
-      console.log(result);
     }catch(err){
       console.log(err);
     }

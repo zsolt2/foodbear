@@ -9,7 +9,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { HelloComponent } from './components/hello/hello.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
@@ -28,7 +27,6 @@ import { CourierTableComponent } from './components/courier-table/courier-table.
 import { CourierDetailsComponent } from './components/courier-details/courier-details.component';
 import { MakeOrderComponent } from './components/make-order/make-order.component';
 import { ListOrdersComponent } from './components/list-orders/list-orders.component';
-import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +34,6 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
     NavbarComponent,
     LoginpageComponent,
     UserProfileComponent,
-    HelloComponent,
     ListUsersComponent,
     MainPageComponent,
     AddUserComponent,
@@ -55,7 +52,6 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
     CourierDetailsComponent,
     MakeOrderComponent,
     ListOrdersComponent,
-    OrderDetailsComponent,
   ],
   imports: [
     BrowserModule,

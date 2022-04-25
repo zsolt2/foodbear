@@ -21,7 +21,6 @@ export class CourierDetailsComponent implements OnInit {
     try{
       const id = this.activatedRoute.snapshot.paramMap.get('id')!;
       this.courier = await this.courierService.get<Courier>(parseInt(id));
-      console.log(this.courier);
     }catch(err){
       console.log(err);
     }

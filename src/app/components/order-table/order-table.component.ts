@@ -20,7 +20,7 @@ export class OrderTableComponent implements OnInit {
   getFullPrice(order:Order):number{
     let price = 0
     order.orderToFoods.forEach(food => {
-      console.log(food)
+      
       price += food.food.price * food.amount
     });
     return price
@@ -35,7 +35,7 @@ export class OrderTableComponent implements OnInit {
       const result = await this.orderService.deliverOrder(orderId);
       if(result){
         alert("Order delivered!");
-        console.log(result);
+        
         let id = this.orders.findIndex(order => order.id === orderId);
         this.orders[id].delivered = result.delivered;
         this.orders[id].deliveryTime = result.deliveryTime;

@@ -19,7 +19,7 @@ export async function fill() {
             });
             for (let i = 0; i < 20; i++) {
                 request('https://www.themealdb.com/api/json/v1/1/random.php', { json: true }, (err, res, body) => {
-                    if (err) { return console.log(err); }
+                    
                     let food: Food = new Food();
                     food.name = body.meals[0].strMeal;
                     food.imageUrl = body.meals[0].strMealThumb;
@@ -27,7 +27,6 @@ export async function fill() {
                     food.description = body.meals[0].strInstructions;
                     food.partner = partners[Math.floor(Math.random() * partners.length)];
                     food.id = null;
-                    console.log(food);
                     request({
                         uri: 'http://localhost:3000/api/createfood',
                         method: 'POST',

@@ -29,11 +29,10 @@ export class LoginpageComponent implements OnInit {
     if (this.signinForm.valid) {
       this.authService.signIn(this.signinForm.value).subscribe({
         next: profileData => {
-          this.router.navigate(['mainpage']);
+          this.router.navigate(['mainpage/makeorder']);
         },
         error: err => {
           this.invalidLogin = true;
-          //window.alert("Invalid Credentials");
         }
       });
     }

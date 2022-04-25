@@ -45,13 +45,10 @@ export class Controller {
     }
 
     update = async (req, res) => {
-        console.log("put");
         const entity = this.repository.create(req.body as {});
 
         try {
-            console.log(entity);
             const existingEntity = await this.repository.findOne(entity.id);
-            console.log('Does enity exist', existingEntity);
             if (!existingEntity) {
                 return res.status(404).json({ message: 'Not existing entity.' });
             }

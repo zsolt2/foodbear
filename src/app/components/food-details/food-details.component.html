@@ -11,26 +11,4 @@
     <p>{{food.orderToFoods.length}}</p>
     <h2>Orders</h2>
     <app-order-table *ngIf="orders" [orders]="orders"></app-order-table>
-    <!-- <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">User</th>
-                <th scope="col">Date</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Courier</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let order of orders">
-                <td>{{order.id}}</td>
-                <td>{{order.user.name}}</td>
-                <td>{{order.date}}</td>
-                <td>{{order.quantity}}</td>
-                <td>{{order.price}}</td>
-                <td>{{order.courier.name}}</td>
-            </tr>
-        </tbody>
-    </table> -->
 </div>

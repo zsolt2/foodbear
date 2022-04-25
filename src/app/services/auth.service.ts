@@ -59,7 +59,6 @@ export class AuthService {
     return new Promise<boolean>((resolve, reject) => {
       const token = localStorage.getItem('access_token');
       this.http.get<boolean>(`/api/token`).subscribe((res:any)=>{
-        //console.log(res)
         resolve(res);
       }, (err) => {
         resolve(false);
@@ -99,7 +98,7 @@ export class AuthService {
 
   // Error
   handleError(error: HttpErrorResponse) {
-    console.log('error handler')
+    
     let msg = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error
@@ -113,8 +112,6 @@ export class AuthService {
   }
 
   addUser(user: User){
-    console.log("hello")
-    console.log(user);
     return lastValueFrom(this.http.post(`/api/createuser`, user ));
   }
 

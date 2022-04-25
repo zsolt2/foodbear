@@ -33,7 +33,6 @@ export class FoodDetailsComponent implements OnInit {
 
     try{
       this.orders = await this.orderService.getCourierByFoodId(this.food.id);
-      console.log("orders", this.orders);
     }catch(err){
       console.log(err);
     }

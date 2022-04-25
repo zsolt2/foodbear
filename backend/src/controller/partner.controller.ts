@@ -9,8 +9,6 @@ export class PartnerController extends Controller {
         try {
             const partnerId = req.params.id;
 
-            console.log(partnerId);
-            
             let result = await this.repository
                 .createQueryBuilder("partner")
                 .where("partner.id = :id", { id: partnerId })

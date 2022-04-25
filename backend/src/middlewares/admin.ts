@@ -11,7 +11,6 @@ export function authorizeAdmin(req, res, next){
         req.user = new User();
         req.user.id = decodeToken.id;
         req.user.isAdmin = decodeToken.isAdmin;
-        console.log(decodeToken);
         if(decodeToken.isAdmin == true){
             next();
         }else{

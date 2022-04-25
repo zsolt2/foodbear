@@ -63,7 +63,7 @@ export class MakeOrderComponent implements OnInit {
     let newOrder = this.orderForm.value;
     newOrder.orderToFoods = [];
     this.foods.forEach(f => {
-      console.log(f.name, this.orderForm.get(f.id.toString())?.value);
+      
       if(this.orderForm.get(f.id.toString())?.value > 0){
         newOrder.orderToFoods.push({
           food: f,
@@ -71,10 +71,10 @@ export class MakeOrderComponent implements OnInit {
         });
       } 
     });
-    console.log(newOrder);
+    
     try{
       const returnedOrder = await this.orderService.create(newOrder);
-      console.log(returnedOrder);
+      
     }catch(err){
       console.log(err);
     }

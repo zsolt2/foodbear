@@ -36,9 +36,7 @@ export class AddPartnerComponent implements OnInit {
 
   async addPartner() {
     try {
-      console.log(this.partnerForm.value);
       this.partnerForm.patchValue({id:null});
-      console.log(this.partnerForm.value);
       const newPartner = await this.partnerService.create<Partner>(this.partnerForm.value);
       this.serversideError = false;
       this.partners.push(newPartner);
@@ -50,7 +48,6 @@ export class AddPartnerComponent implements OnInit {
 
   async updatePartner() {
     try{
-      console.log('in update',this.partnerForm.value);
       const updatedPartner = await this.partnerService.update<Partner>(this.partnerForm.value);
       this.partners = this.partners.map(p=>p.id===updatedPartner.id?updatedPartner:p);
     }catch(err){
@@ -78,9 +75,7 @@ export class AddPartnerComponent implements OnInit {
     this.partnerForm.patchValue(partner);
     document.querySelector('.selected')?.classList.remove(...classes);
     let selected = document.getElementById(partner.id.toString());
-    console.log(selected);
     selected?.classList.add(...classes);
-    console.log('after modify',this.partnerForm.value);
   }
 
   trackElement(index: number, element: any) {

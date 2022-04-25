@@ -18,6 +18,7 @@ createConnection(connectionOptions).then(async connection => {
     // Express settings
     const app = express()
      app.use(cors())
+     app.use(express.json());
 
     // Serve static resources
     app.use(getAuthRoutes());

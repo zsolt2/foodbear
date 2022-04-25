@@ -20,12 +20,12 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     return this.authService.isAdmin().then((res) => {
-      console.log("isAdmin: "); console.log(res);
+      
       if (res===true) {
         return true;
       } else {
         window.alert('Access only allowed for admins!');
-        this.router.navigate(['mainpage']);
+        this.router.navigate(['/mainpage/orders']);
         return false;
       }
     });

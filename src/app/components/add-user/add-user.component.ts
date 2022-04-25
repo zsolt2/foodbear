@@ -30,7 +30,6 @@ export class AddUserComponent implements OnInit {
 
   async addUser(){
     try{
-      console.log(this.registerForm.value);
       const newUser:User = {
         id: this.registerForm.value.id,
         name: this.registerForm.value.name,
@@ -40,7 +39,6 @@ export class AddUserComponent implements OnInit {
       }
       const returndUser = await this.authService.addUser(newUser);
       this.serversideError = false;
-      console.log(returndUser);
     }catch(err){
       console.log(err);
       this.serversideError = true;

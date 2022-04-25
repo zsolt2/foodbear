@@ -8,11 +8,9 @@ export function authorize(req, res, next){
         
         jwt.verify(token, "longersecretisbetter");
         const decodeToken = jwt.decode(token, "longersecretisbetter");
-        console.log("decoded token"); console.log(decodeToken);
         req.user = new User();
         req.user.id = decodeToken.id;
         req.user.isAdmin = decodeToken.isAdmin;
-        console.log("authorize ");console.log(req.user);
         next();
     } catch (error) {
         console.log("authorize error" + error.message);

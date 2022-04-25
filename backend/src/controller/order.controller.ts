@@ -10,7 +10,6 @@ export class OrderController extends Controller{
         try {
             const partnerId = req.params.id;
 
-            console.log(partnerId);
             let result = await this.repository
                 .createQueryBuilder("order")
                 .leftJoinAndSelect("order.orderToFoods", "orderToFoods")
@@ -25,7 +24,6 @@ export class OrderController extends Controller{
                     message: "No orders found"
                 });
             } else if(result.length > 0) {
-            //console.log("partnerelkwarj" , result[0].foods[0].partner);
                 let result2 = await this.repository
                 .createQueryBuilder("order")
                 .leftJoinAndSelect("order.orderToFoods", "orderToFoods")
@@ -143,7 +141,6 @@ export class OrderController extends Controller{
             let order = req.body;
             let amount = 0;
             order.orderToFoods.forEach(x => amount += x.amount);
-            console.log("amount", amount);
             const courierRepository = await getRepository(Courier);
             let courier = await courierRepository.findOne({
                 where: {
@@ -151,7 +148,6 @@ export class OrderController extends Controller{
                     capacity: MoreThanOrEqual(amount)
                 }
             });
-            console.log(courier);
             if(!courier){
                 return res.status(404).json("No available couriers");
             }
@@ -183,7 +179,6 @@ export class OrderController extends Controller{
             .addSelect("order.id")
             .where("order.id = :id", { id: entityId })
             .getMany();
-            console.log("connections",connections);
             if(connections){
                 await orderToFoodsRepo.remove(connections);
             }
@@ -224,7 +219,6 @@ export class OrderController extends Controller{
             order.deliveryTime = new Date();
 
             let result = await this.repository.save(order);
-            console.log("result", result);
             courierRepo.update(order.courier.id, { isAvailable: true });
             if(!result){
                 return res.status(404).json("Failed to deliver order");
