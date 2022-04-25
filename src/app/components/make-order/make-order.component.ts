@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Food } from 'src/app/models/Food';
+import { Order } from 'src/app/models/Order';
 import { Partner } from 'src/app/models/Partner';
 import { OrderService } from 'src/app/services/order.service';
 import { PartnerService } from 'src/app/services/partner.service';
@@ -73,7 +74,7 @@ export class MakeOrderComponent implements OnInit {
     });
     
     try{
-      const returnedOrder = await this.orderService.create(newOrder);
+      const returnedOrder = await this.orderService.create<Order>(newOrder);
       window.alert('Order created');
     }catch(err){
       console.log(err);
