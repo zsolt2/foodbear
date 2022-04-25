@@ -10,7 +10,7 @@ export function getCourierRoutes(){
     
     const courierController = new CourierController();
 
-    router.get('/api/courier', authorizeAdmin, courierController.getAll);
+    router.get('/api/courier', authorize, courierController.getAll);
     router.post('/api/createcourier', authorizeAdmin,courierValidator, courierController.create);
     router.get('/api/courier/:id', authorize, courierController.getOne); 
     router.delete('/api/courier/:id',authorizeAdmin, courierController.delete );
