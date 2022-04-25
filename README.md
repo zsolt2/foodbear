@@ -1,27 +1,44 @@
 # Foodbear
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+# Installation
 
-## Development server
+## Docker compose
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `docker-compose up` to start the *angular* frontend server, *express* backend server, *mysql* database, and *phpmyadmin* admin interface. 
 
-## Code scaffolding
+Or you could run the services separatelly without docker-compose.
+ - Start frontend server: `npm run start`
+ - Start backend server: `npm run backend`
+ - Make sure to import the [database dump](./dbdump/dbdump.sql)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You can access the development server at [http://localhost:4200](http://localhost:4200). The backend API is listening on port [3000](http://localhost:300).
+If you using docker compose you can access phpMyAdmin at [http://localhost:8080](http://localhost:8080).
 
-## Build
+# Featues
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Authentication 
 
-## Running unit tests
+There are two authentication leves, both on the frontend and the backend. It is achieved  by using [JWT tokens](https://jwt.io/).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Reular users can make read operations throug the API, and make orders. 
 
-## Running end-to-end tests
+Admin user can delete and create other users.
+Furthermore they can create, delete, modify foods, partners and couriers.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Regural user can not access ceartain frontend pages, and can not access ceartan API features.
 
-## Further help
+## Used technologies
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Angular](https://angular.io/)
+- [Express](https://expressjs.com/)
+- [MySQL](https://mariadb.com/)
+- [PHPMyAdmin](https://www.phpmyadmin.net/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/overview/)
+- [Node.js](https://nodejs.org/)
+- [Npm](https://www.npmjs.com/)
+- [JWT](https://jwt.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Postman](https://www.getpostman.com/)
+
+ 
