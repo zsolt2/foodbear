@@ -14,6 +14,10 @@ export class FoodController extends Controller{
                 .leftJoinAndSelect("food.orderToFoods", "orderToFoods")
                 .leftJoinAndSelect("orderToFoods.order", "order")
                 .getOne();
+            // const entity = await this.repository.findOne({
+            //     where: { id: entityId },
+            //     relations: ["partner", "orderToFoods", "orderToFoods.order"]
+            // });
             
             if (!entity) {
                 return res.status(404).json({ message: 'Entity not found.' });
@@ -28,7 +32,8 @@ export class FoodController extends Controller{
         try {
             const entities = await this.repository.createQueryBuilder("food")
             .leftJoinAndSelect("food.partner", "partner")
-            .leftJoinAndSelect("food.orders", "orders")
+            .leftJoinAndSelect("food.orderToFoods", "orderToFoods")
+            .leftJoinAndSelect("orderToFoods.order", "order")
             .getMany();
             res.json(entities);
         } catch (err) {

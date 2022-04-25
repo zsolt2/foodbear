@@ -16,7 +16,7 @@
         <td>{{food.name}}</td>
         <td>{{food.price}}</td>
         <td>{{food.description}}</td>
-        <td>{{food.orders.length}}</td>
+        <td>{{food.orderToFoods.length}}</td>
         <td><button class="btn btn-primary" routerLink="/mainpage/food/{{food.id}}" [state]="{food:food}">Details</button></td>
       </tr>
     </tbody>

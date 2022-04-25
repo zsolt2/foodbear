@@ -17,6 +17,7 @@ export function getOrderRoutes(){
     router.put('/api/order/:id',authorizeAdmin, orderController.update );
     router.get('/api/order/partner/:id', authorize, orderController.getOrdersByPartnerId);
     router.get('/api/order/food/:id', authorize, orderController.getOrderByFoodId);
+    router.get('/api/order/:id/deliver', authorize, orderController.deliver);
 
     return router;
 }

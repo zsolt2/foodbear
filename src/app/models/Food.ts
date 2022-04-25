@@ -4,11 +4,14 @@ import { Partner } from "./Partner";
 
 
 export class Food{
-    id!:number;
+id!:number;
     name!:string;
     price!:number;
     description!:string;
     imageUrl!:string;
     partner!:Partner;
-    orders!:Order[];
+    orderToFoods!:{
+        order:Order;
+        amount:number;
+    }[];
 }

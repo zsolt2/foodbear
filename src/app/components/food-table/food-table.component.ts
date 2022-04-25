@@ -13,6 +13,7 @@ export class FoodTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  
   }
 
 }

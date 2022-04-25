@@ -3,10 +3,13 @@
       <tr>
         <th scope="col">id</th>
         <th scope="col">Destination</th>
+        <th scope="col">Name</th>
         <th scope="col">Note</th>
         <th scope="col">Foods</th>
         <th scope="col">FullPrice</th>
         <th scope="col">Courier</th>
+        <th scope="col">Restaurant</th>
+        <th scope="col">Is delivered</th>
         <th scope="col">Order time</th>
         <th scope="col">Delivery time</th>
       </tr>
@@ -15,12 +18,20 @@
       <tr *ngFor="let order of orders">
         <td>{{order.id}}</td>
         <td>{{order.address}}</td>
+        <td>{{order.name}}</td>
         <td>{{order.note}}</td>
-        <td><span *ngFor="let food of order.foods"><a routerLink="/mainpage/food/{{food.id}}" >{{food.name}} </a></span></td>
+        <td><div *ngFor="let food of order.orderToFoods"><a routerLink="/mainpage/food/{{food.food.id}}" >{{food.food.name}} </a>x{{food.amount}}</div></td>
         <td>{{getFullPrice(order)}}</td>
         <td><a routerLink="/mainpage/courier/{{order.courier.id}}">{{order.courier.name}}</a></td>
+        <td><a routerLink="/mainpage/partner/{{getPartner().id}}">{{getPartner().name}}</a></td>
+        <td>{{order.delivered}}</td>
         <td>{{order.orderTime}}</td>
         <td>{{order.deliveryTime}}</td>
+        <td><div class="btn-group" role="group">
+            <button type="button" class="btn btn-sm btn-primary" routerLink="/mainpage/order/{{order.id}}">Details</button>
+            <button type="button" class="btn btn-sm btn-warning" (click)="deliverOrder(order.id)">Deliver</button>
+            <button type="button" class="btn btn-sm btn-danger" (click)="deleteOrder(order.id)">Delete</button>
+        </div></td>
       </tr>
     </tbody>
   </table>

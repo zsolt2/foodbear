@@ -99,6 +99,26 @@ export class AuthController extends Controller{
         }
     }
     
+    delete = async (req, res) => {
+        let entityId;
+        if(req.params.id){
+            entityId = req.params.id;
+        } else {
+            entityId = req.user.id;
+        }
 
+        try {
+            const entity = await this.repository.findOne(entityId);
+            if (!entity) {
+                return res.status(404).json({ message: 'Not existing entity.' });
+            }
+
+            await this.repository.delete(entity);
+            res.status(200).send();
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({ message: err.message });
+        }
+    }
     
 }

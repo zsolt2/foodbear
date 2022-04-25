@@ -7,21 +7,22 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService extends BaseService{
+export class OrderService extends BaseService {
 
-  constructor(http:HttpClient) { 
-    super(http, "partner");
+  constructor(http: HttpClient) {
+    super(http, "order");
   }
 
-  getOrderByPartnerId(partnerId:number){
+  getOrderByPartnerId(partnerId: number) {
     return lastValueFrom(this.http.get<Order[]>(`/api/order/partner/${partnerId}`));
   }
 
-  async getCourierByFoodId(foodId:number):Promise<Order[]>{
-    
+  async getCourierByFoodId(foodId: number): Promise<Order[]> {
     return await lastValueFrom(this.http.get<Order[]>(`api/order/food/${foodId}`));
+  }
 
+  async deliverOrder(orderId: number): Promise<Order> {
+    return await lastValueFrom(this.http.get<Order>(`api/order/${orderId}/deliver`));
+  }
 
-}
-  
 }

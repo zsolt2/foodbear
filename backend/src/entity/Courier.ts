@@ -13,7 +13,7 @@ export class Courier{
     isAvailable:boolean;
     @OneToMany(type => Order, order => order.courier, {
         //eager: true,
-        //cascade: true
+        cascade: true
     })
     orders:Order[];
 }

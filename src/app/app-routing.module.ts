@@ -9,9 +9,12 @@ import { FoodDetailsComponent } from './components/food-details/food-details.com
 import { HelloComponent } from './components/hello/hello.component';
 import { ListCouriersComponent } from './components/list-couriers/list-couriers.component';
 import { ListFoodsComponent } from './components/list-foods/list-foods.component';
+import { ListOrdersComponent } from './components/list-orders/list-orders.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { MakeOrderComponent } from './components/make-order/make-order.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { PartnerDetailsComponent } from './components/partner-details/partner-details.component';
 import { PartnerListComponent } from './components/partner-list/partner-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -36,6 +39,9 @@ const routes: Routes = [
     { path: 'food/:id', component: FoodDetailsComponent, canActivate: [AuthGuard]},
     { path: 'listcouriers', component: ListCouriersComponent, canActivate: [AuthGuard]},
     { path: 'courier/:id', component: CourierDetailsComponent, canActivate: [AuthGuard]},
+    { path: 'listorders', component: ListOrdersComponent, canActivate: [AuthGuard]},
+    { path: 'order/:id', component: OrderDetailsComponent, canActivate: [AuthGuard]},
+    { path: 'makeorder', component: MakeOrderComponent, canActivate: [AuthGuard]},
   ] },
 
   { path: '**', redirectTo: '/mainpage'},

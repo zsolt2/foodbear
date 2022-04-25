@@ -30,9 +30,9 @@ export class CourierDetailsComponent implements OnInit {
   getRestaurants(): Partner[]{
     let restaurants:Partner[] = [];
     this.courier.orders.forEach(order => {
-      order.foods.forEach(food => {
-        if(!restaurants.includes(food.partner)){
-          restaurants.push(food.partner);
+      order.orderToFoods.forEach(food => {
+        if(!restaurants.includes(food.food.partner)){
+          restaurants.push(food.food.partner);
         }
       })
     })
@@ -42,9 +42,9 @@ export class CourierDetailsComponent implements OnInit {
   getFoods(): Food[]{
     let foods:Food[] = [];
     this.courier.orders.forEach(order => {
-      order.foods.forEach(food => {
-        if(!foods.includes(food)){
-          foods.push(food);
+      order.orderToFoods.forEach(food => {
+        if(!foods.includes(food.food)){
+          foods.push(food.food);
         }
       })
     })

@@ -8,7 +8,7 @@
     <h2>Restaurant</h2>
     <p><a routerLink="/mainpage/partner/{{food.partner.id}}">{{food.partner.name}}</a></p>
     <h2>Number of orders</h2>
-    <p>{{food.orders.length}}</p>
+    <p>{{food.orderToFoods.length}}</p>
     <h2>Orders</h2>
     <app-order-table *ngIf="orders" [orders]="orders"></app-order-table>
     <!-- <table class="table table-striped">

@@ -2,7 +2,7 @@
     <div class="col-md-4">
         <div class="sticky-top">
 
-            <form class="form-signin" [formGroup]="courierForm" (ngSubmit)="addCourier()">
+            <form [formGroup]="courierForm" (ngSubmit)="addCourier()">
                 <h3 class="h3 mb-3 font-weight-normal text-center">Create new courier</h3>
                 <div class="form-group">
                     <label>Name</label>

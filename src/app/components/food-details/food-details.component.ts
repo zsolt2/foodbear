@@ -21,6 +21,7 @@ export class FoodDetailsComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.food=history.state.food;
     if(!this.food){
       try{

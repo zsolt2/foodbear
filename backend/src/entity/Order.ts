@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Courier } from "./Courier";
 import { Food } from "./Food";
 import { OrderToFood } from "./OrderToFood";
@@ -9,9 +9,9 @@ export class Order{
     id:number;
     @Column()
     name:string;
-    @Column({type:"datetime"})
+    @CreateDateColumn()
     orderTime:Date;
-    @Column({type:"datetime"})
+    @Column({type:"datetime", nullable:true})
     deliveryTime:Date;
     @Column()
     address:string;
@@ -24,6 +24,10 @@ export class Order{
     // foods:Food[];
     @ManyToOne(type => Courier, courier => courier.orders)
     courier:Courier;
-    @OneToMany(type => OrderToFood, orderToFood => orderToFood.order)
+    @OneToMany(type => OrderToFood, orderToFood => orderToFood.order, {
+        cascade: true,
+    })
     orderToFoods: OrderToFood[];
+    @Column({default:false})
+    delivered:boolean;
 }
