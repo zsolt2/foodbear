@@ -12,7 +12,7 @@
     <tbody>
       <tr *ngFor="let food of foods">
         <th scope="row">{{food.id}}</th>
-        <td><img [src]="" class="product-img img-fluid" style="max-width: 100px;"></td>
+        <td><img [src]="food.imageUrl" class="product-img img-fluid" style="max-width: 100px;"></td>
         <td>{{food.name}}</td>
         <td>{{food.price}}</td>
         <td>{{food.description}}</td>
