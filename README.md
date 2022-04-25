@@ -12,7 +12,7 @@ Or you would like to run the services separatelly without docker-compose.
  - Make sure to import the [database dump](./dbdump/dbdump.sql)
 
 You can access the development server at [http://localhost:4200](http://localhost:4200). The backend API is listening on port [3000](http://localhost:300).
-If you using docker compose you can access phpMyAdmin at [http://localhost:8080](http://localhost:8080).
+If you using docker compose you can access phpMyAdmin at [http://localhost:8080](http://localhost:8080).(Credentials: root:root)
 
 # Featues
 
@@ -26,6 +26,11 @@ Admin user can delete and create other users.
 Furthermore they can create, delete, modify foods, partners and couriers.
 
 Regural user can not access ceartain frontend pages, and can not access ceartan API features.
+
+## Test credencials
+  admin@foodbear.com:password
+  nonAdminUser@foodbear.com:password
+  user@foodbear.com:password
 
 ## Used technologies
 
