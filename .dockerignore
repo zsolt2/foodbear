@@ -8,4 +8,4 @@ docker-compose.yml
 .evn
 .git
 .gitignore
-mysql_data
+dbdump

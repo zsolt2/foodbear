@@ -20,7 +20,8 @@ services:
     ports:
       - '127.0.0.1:${BACKEND_PORT}:${BACKEND_PORT}'
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   frontend:
     build: 
@@ -43,11 +44,17 @@ services:
     networks: 
        - foodbear
     volumes:
-       - mysql:/var/lib/mysql
+       - ./dbdump:/docker-entrypoint-initdb.d
+       - mysql-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     ports:
        - 127.0.0.1:${MYSQL_PORT}:${MYSQL_PORT}
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
 
   phpmyadmin:
     image: phpmyadmin
@@ -61,9 +68,8 @@ services:
 networks:
   foodbear:
     driver: bridge
-
 volumes:
-  mysql:
+  mysql-data:
     driver: local
 
 
