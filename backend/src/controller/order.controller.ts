@@ -1,6 +1,6 @@
 import { getRepository, MoreThan, MoreThanOrEqual, Repository } from "typeorm";
 import { Controller } from "./base.controller";
-import { Order } from "../../../src/app/models/Order";
+import { Order } from "../entity/Order";
 import { Courier } from "../entity/Courier";
 
 export class OrderController extends Controller{
