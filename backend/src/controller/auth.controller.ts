@@ -65,18 +65,9 @@ export class AuthController extends Controller {
         }
     }
 
+    // The function is behind the auth middleware
     isAdmin = async (req, res, next) => {
-        const userId = req.user.id;
-        try {
-            const user = await this.repository.findOne(userId);
-
-            if (!user) {
-                return res.status(404).json({ message: 'User not found.' });
-            }
-            res.status(200).json(user.isAdmin);
-        } catch (err) {
-            res.status(500).json({ message: err.message });
-        }
+        res.status(200).json(true);
     };
 
 
@@ -89,6 +80,7 @@ export class AuthController extends Controller {
         }
         try {
             const entity = await this.repository.findOne(entityId);
+            entity.password='';
 
             if (!entity) {
                 return res.status(404).json({ message: 'Entity not found.' });

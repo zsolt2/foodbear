@@ -15,7 +15,7 @@ export function getAuthRoutes(){
     router.post('/api/login', authController.login);
     router.post('/api/createuser',userValidator, authController.createUser);
     router.get('/api/user', authorize, authController.getOne); 
-    router.get('/api/user/isadmin', authorize, authController.isAdmin);
+    router.get('/api/user/isadmin', authorizeAdmin, authController.isAdmin);
     router.delete('/api/users/:id',authorizeAdmin, authController.delete );
     router.get('/api/token', authorize, async (req, res) => {
         res.status(200).json(true);
