@@ -188,7 +188,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `email`, `isAdmin`, `password`) VALUES
 (7, 'noAdmin', 'example2@example.com', 0, '$2b$10$R0TTRVMiwvGZyWfoRQs5S.dAwmTx0MdroXu2oyRFZgzrbZ1UyDQym'),
-(57, 'Admin', 'admin@foodbear.com', 1, '$2b$10$wySl73iHUowYfimde38YIu5oi5EGqIWGPAiA5JKXKFiXnOfbmVWY2'),
+(59, 'Non Admin', 'nonAdminUser@foodbear.com', 0, '$2b$10$oCP7h.UwZnTXgEyfYIzmVuz7yDkTSaiXayOkHVdg7fzQF0cd6HHH2'),
 (58, 'Power User', 'user@foodbear.com', 1, '$2b$10$/vAzbj6SUVAj54UsUbm8bugSyxTR4fFCmJFk.6w.j3AfIUvdySLwq');
 
 --
