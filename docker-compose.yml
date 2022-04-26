@@ -52,9 +52,9 @@ services:
     ports:
        - 127.0.0.1:${MYSQL_PORT}:${MYSQL_PORT}
     healthcheck:
-            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-            timeout: 10s
-            retries: 10
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
 
   phpmyadmin:
     image: phpmyadmin
