@@ -45,7 +45,7 @@ export class AddCourierComponent implements OnInit {
       this.courierForm.patchValue({id:null});
       let newCourier = this.courierForm.value;
       newCourier.orders = [];
-      const result = await this.courierService.create<Courier>(newCourier);
+      const result = await this.courierService.create(newCourier);
       this.couriers.push(result);
     }catch(err){
       console.log(err);
@@ -54,7 +54,7 @@ export class AddCourierComponent implements OnInit {
 
   async updateCourier(){
     try{
-      const result = await this.courierService.update<Courier>(this.courierForm.value);
+      const result = await this.courierService.update(this.courierForm.value);
       this.couriers = this.couriers.map(f=>f.id===result.id?result:f);
     }catch(err){
       console.log(err);

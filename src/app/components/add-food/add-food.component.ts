@@ -43,7 +43,7 @@ export class AddFoodComponent implements OnInit {
   async addFood(){
     try{
       this.foodForm.patchValue({id:null});
-      const result = await this.foodService.create<Food>(this.foodForm.value);
+      const result = await this.foodService.create(this.foodForm.value);
       result.partner = this.partners.find(p=>p.id===<any>result.partner)!;
       this.foods.push(result);
     }catch(err){
@@ -53,7 +53,7 @@ export class AddFoodComponent implements OnInit {
 
   async updateFood(){
     try{
-      const result = await this.foodService.update<Food>(this.foodForm.value);
+      const result = await this.foodService.update(this.foodForm.value);
       this.foods = this.foods.map(f=>f.id===result.id?result:f);
     }catch(err){
       console.log(err);

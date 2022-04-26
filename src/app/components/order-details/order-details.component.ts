@@ -19,7 +19,7 @@ export class OrderDetailsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try{
       const id = this.activatedRoute.snapshot.paramMap.get('id')!;
-      this.order = await this.orderService.get<Order>(parseInt(id));
+      this.order = await this.orderService.get(parseInt(id));
     }catch(err){
       console.log(err);
     }
