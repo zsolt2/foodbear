@@ -70,7 +70,7 @@
                     <td>{{food.price}}</td>
                     <td><a routerLink="/mainpage/partner/{{food.partner.id}}">{{food.partner.name}}</a></td>
                     <td>
-                        <p class="description">{{food.description}}</p>
+                        <p class="description">{{food.description | descriptionSize }}</p>
                     </td>
                     <td>
                         <div class="btn-group" role="group">

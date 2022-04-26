@@ -11,7 +11,7 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class FoodService extends BaseService{
+export class FoodService extends BaseService<Food>{
 
   constructor(http: HttpClient) { 
     super(http, "food");

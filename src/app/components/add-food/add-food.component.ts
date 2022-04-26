@@ -34,7 +34,6 @@ export class AddFoodComponent implements OnInit {
     try{
       this.foods = await this.foodService.getAll();
       this.partners = await this.partnerService.getAll();
-      this.limitDescription();
     }catch(err){
       console.log(err);
     }
@@ -47,7 +46,6 @@ export class AddFoodComponent implements OnInit {
       const result = await this.foodService.create<Food>(this.foodForm.value);
       result.partner = this.partners.find(p=>p.id===<any>result.partner)!;
       this.foods.push(result);
-      this.limitDescription();
     }catch(err){
       console.log(err);
     }
@@ -75,14 +73,6 @@ export class AddFoodComponent implements OnInit {
     this.foodForm.patchValue(food);
     this.foodForm.patchValue({partner:food.partner.id});
     this.modifyEnabled = true;
-  }
-
-  limitDescription(){
-    document.querySelectorAll('.description').forEach(e=>{
-      if(e.innerHTML.length>100){
-        e.innerHTML = e.innerHTML.substring(0,100)+'...';
-      }
-    })
   }
 
 }
