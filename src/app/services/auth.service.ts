@@ -24,7 +24,6 @@ export class AuthService {
 
   // Sign-up
   signUp(user: User): Observable<any> {
-    console.log(user);
     return this.http.post('/api', user).pipe(catchError(this.handleError));
   }
 

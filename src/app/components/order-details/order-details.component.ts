@@ -32,7 +32,6 @@ export class OrderDetailsComponent implements OnInit {
       foods.push(f.food);
       }
     })
-    console.log(foods);
     return foods;
   }
 

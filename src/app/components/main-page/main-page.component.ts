@@ -16,7 +16,6 @@ export class MainPageComponent implements OnInit {
    async ngOnInit(): Promise<void> {
      this.currentUser = await this.authService.getCurrentUser();
      
-      console.log("Main page"); console.log(this.currentUser);
   }
 
 }
