@@ -2,6 +2,7 @@ import { getRepository, MoreThan, MoreThanOrEqual, Repository } from "typeorm";
 import { Controller } from "./base.controller";
 import { Order } from "../entity/Order";
 import { Courier } from "../entity/Courier";
+import { validationResult } from "express-validator";
 
 export class OrderController extends Controller{
     repository: Repository<Order> = getRepository("Order");
@@ -140,6 +141,10 @@ export class OrderController extends Controller{
 
     create = async (req, res) => {
         try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(422).json({ errors: errors.array() });
+            }
             //Search for available courier
             let order = req.body;
             let amount = 0;

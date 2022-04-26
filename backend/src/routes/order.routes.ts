@@ -11,10 +11,10 @@ export function getOrderRoutes(){
     const orderController = new OrderController();
 
     router.get('/api/order', authorize, orderController.getAll);
-    router.post('/api/createorder', authorize, orderController.create);
+    router.post('/api/createorder', orderValidator, orderController.create);
     router.get('/api/order/:id', authorize, orderController.getOne); 
     router.delete('/api/order/:id',authorize, orderController.delete );
-    router.put('/api/order/:id',authorize, orderController.update );
+    router.put('/api/order/:id',orderValidator, orderController.update );
     router.get('/api/order/partner/:id', authorize, orderController.getOrdersByPartnerId);
     router.get('/api/order/food/:id', authorize, orderController.getOrderByFoodId);
     router.get('/api/order/:id/deliver', authorize, orderController.deliver);

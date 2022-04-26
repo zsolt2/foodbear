@@ -13,7 +13,7 @@ export function getAuthRoutes(){
 
     router.get('/api/users', authorizeAdmin, authController.getAll);
     router.post('/api/login', authController.login);
-    router.post('/api/createuser', userValidator, authController.createUser);
+    router.post('/api/createuser',userValidator, authController.createUser);
     router.get('/api/user', authorize, authController.getOne); 
     router.get('/api/user/isadmin', authorize, authController.isAdmin);
     router.delete('/api/users/:id',authorizeAdmin, authController.delete );

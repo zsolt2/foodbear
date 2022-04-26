@@ -1,9 +1,14 @@
+import { validationResult } from "express-validator";
 import { ILike, Like, Repository } from "typeorm";
 
 export class Controller {
     repository: Repository<any>;
 
     create = async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() });
+        }
         const body = req.body;
         const entity = this.repository.create(body);
 
@@ -28,12 +33,12 @@ export class Controller {
         }
     }
 
-    getOne =  async (req, res ) => {
+    getOne = async (req, res) => {
         const entityId = req.params.id;
 
         try {
             const entity = await this.repository.findOne(entityId);
-            
+
             if (!entity) {
                 return res.status(404).json({ message: 'Entity not found.' });
             }
@@ -45,6 +50,10 @@ export class Controller {
     }
 
     update = async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() });
+        }
         const entity = this.repository.create(req.body as {});
 
         try {
@@ -62,7 +71,7 @@ export class Controller {
 
     delete = async (req, res) => {
         let entityId = req.params.id;
-        
+
 
         try {
             const entity = await this.repository.findOne(entityId);
@@ -79,12 +88,13 @@ export class Controller {
     }
 
     search = async (req, res) => {
-        try{
+        try {
             const searchTerm = req.params.search;
             const entities = await this.repository.find({
                 where: {
                     name: ILike(`${searchTerm}`)
-                }});
+                }
+            });
             res.status(200).json(entities);
         } catch (err) {
             res.status(500).json({ message: err.message });
