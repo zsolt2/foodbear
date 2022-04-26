@@ -1,4 +1,4 @@
-FROM node:17.9.0
+FROM node:17.9.0-alpine
 
 ENV MYSQL_HOST=
 ENV MYSQL_PORT=
