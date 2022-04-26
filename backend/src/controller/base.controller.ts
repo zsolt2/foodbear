@@ -1,4 +1,4 @@
-import { Like, Repository } from "typeorm";
+import { ILike, Like, Repository } from "typeorm";
 
 export class Controller {
     repository: Repository<any>;
@@ -83,7 +83,7 @@ export class Controller {
             const searchTerm = req.params.search;
             const entities = await this.repository.find({
                 where: {
-                    name: Like(`%${searchTerm}%`)
+                    name: ILike(`${searchTerm}`)
                 }});
             res.status(200).json(entities);
         } catch (err) {

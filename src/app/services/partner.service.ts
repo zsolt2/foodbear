@@ -12,7 +12,7 @@ import { Order } from '../models/Order';
 @Injectable({
   providedIn: 'root'
 })
-export class PartnerService extends BaseService{
+export class PartnerService extends BaseService<Partner>{
   
 
   constructor(http:HttpClient) { 

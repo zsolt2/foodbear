@@ -7,7 +7,7 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService extends BaseService {
+export class OrderService extends BaseService<Order> {
 
   constructor(http: HttpClient) {
     super(http, "order");

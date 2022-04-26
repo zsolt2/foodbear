@@ -28,6 +28,7 @@ import { CourierDetailsComponent } from './components/courier-details/courier-de
 import { MakeOrderComponent } from './components/make-order/make-order.component';
 import { ListOrdersComponent } from './components/list-orders/list-orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { DescriptionSizePipe } from './pipes/description-size.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
     CourierDetailsComponent,
     MakeOrderComponent,
     ListOrdersComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    DescriptionSizePipe
   ],
   imports: [
     BrowserModule,

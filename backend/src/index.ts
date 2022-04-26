@@ -29,13 +29,6 @@ createConnection(connectionOptions).then(async connection => {
 
     //fill();
 
-    //Express error handling
-    app.use((req, res, next) => {
-        setImmediate(() => {
-        next(new Error('Something went wrong'))
-        })
-    })
-
     app.use(function (err, req, res, next) {
         console.error(err.message)
         if (!err.statusCode) err.statusCode = 500
