@@ -20,7 +20,7 @@ export class CourierDetailsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try{
       const id = this.activatedRoute.snapshot.paramMap.get('id')!;
-      this.courier = await this.courierService.get<Courier>(parseInt(id));
+      this.courier = await this.courierService.get(parseInt(id));
     }catch(err){
       console.log(err);
     }

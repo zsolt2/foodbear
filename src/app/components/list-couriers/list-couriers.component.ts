@@ -16,7 +16,7 @@ export class ListCouriersComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try{
-      this.couriers = await this.courierService.getAll<Courier>();
+      this.couriers = await this.courierService.getAll();
     }catch(err){
       console.log(err);
     }

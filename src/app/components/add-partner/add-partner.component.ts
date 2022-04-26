@@ -37,7 +37,7 @@ export class AddPartnerComponent implements OnInit {
   async addPartner() {
     try {
       this.partnerForm.patchValue({id:null});
-      const newPartner = await this.partnerService.create<Partner>(this.partnerForm.value);
+      const newPartner = await this.partnerService.create(this.partnerForm.value);
       this.serversideError = false;
       this.partners.push(newPartner);
     } catch (err) {
@@ -48,7 +48,7 @@ export class AddPartnerComponent implements OnInit {
 
   async updatePartner() {
     try{
-      const updatedPartner = await this.partnerService.update<Partner>(this.partnerForm.value);
+      const updatedPartner = await this.partnerService.update(this.partnerForm.value);
       this.partners = this.partners.map(p=>p.id===updatedPartner.id?updatedPartner:p);
     }catch(err){
       console.log(err);
