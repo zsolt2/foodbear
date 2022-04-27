@@ -25,4 +25,8 @@ export class OrderService extends BaseService<Order> {
     return await lastValueFrom(this.http.get<Order>(`api/order/${orderId}/deliver`));
   }
 
+  async getByDate(date:String): Promise<Order[]> {
+    return await lastValueFrom(this.http.get<Order[]>(`api/order/?date=${date}`));
+  }
+
 }

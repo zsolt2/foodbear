@@ -1,0 +1,31 @@
+<div class="row auth-wrapper justify-content-around">
+    <div class="col-md-4">
+        <div class="sticky-top">
+
+            <form [formGroup]="dateForm" (ngSubmit)="getOrders()">
+                <h3 class="h3 mb-3 font-weight-normal text-center">Create new date</h3>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" class="form-control" formControlName="date" placeholder="Enter date"
+                        [ngClass]="{ 'is-invalid': dateForm.invalid && (dateForm.dirty ) && dateForm.controls['date'].errors }" />
+                    <span class="invalid-feedback">
+                        Name is not valid
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-block btn-primary mt-2" [disabled]="dateForm.invalid">Serch orders</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div *ngIf="orders">
+    <div class="card mt-3">
+        <div class="card-header text-white" style="background-color: #0d6efd;">
+            Orders
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">Number or orders: {{ orders.length }}</li>
+            <li class="list-group-item">Full return: {{getFullPrice()}}</li>
+        </ul>
+    </div>
+    <app-order-table [orders]="orders"></app-order-table>
+</div>

@@ -2,6 +2,7 @@ import { OrderController } from "../controller/order.controller";
 import * as express from "express";
 import { authorizeAdmin } from "../middlewares/admin";
 import { authorize } from "../middlewares/auth";
+import { check, param, query } from "express-validator";
 
 const orderValidator = require("../validator/orderValidator");
 

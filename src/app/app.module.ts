@@ -29,6 +29,7 @@ import { MakeOrderComponent } from './components/make-order/make-order.component
 import { ListOrdersComponent } from './components/list-orders/list-orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { DescriptionSizePipe } from './pipes/description-size.pipe';
+import { ListByDateComponent } from './list-by-date/list-by-date.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { DescriptionSizePipe } from './pipes/description-size.pipe';
     MakeOrderComponent,
     ListOrdersComponent,
     OrderDetailsComponent,
-    DescriptionSizePipe
+    DescriptionSizePipe,
+    ListByDateComponent
   ],
   imports: [
     BrowserModule,

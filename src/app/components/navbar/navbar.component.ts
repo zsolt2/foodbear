@@ -10,14 +10,18 @@ import { User } from '../../models/User';
 export class NavbarComponent implements OnInit {
 
   constructor() { }
-  @Input() currentUser!:User;
-  @Input() authService!:AuthService;
+  @Input() currentUser!: User;
+  @Input() authService!: AuthService;
 
-  ngOnInit(): void {
-    
+  async ngOnInit(): Promise<void> {
+    try {
+      this.currentUser.isAdmin = await this.authService.isAdmin();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  logout(){
+  logout() {
     this.authService.doLogout();
   }
 
