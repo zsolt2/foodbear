@@ -6,13 +6,13 @@
 
 Run `docker-compose up` to start the *angular* frontend server, *express* backend server, *mysql* database, and *phpmyadmin* admin interface. 
 
-Or you would like to run the services separatelly without docker-compose.
- - Start frontend server: `npm run start`
- - Start backend server: `npm run backend`
+Or you can run the services separatelly without docker-compose.
+ - Start the frontend server: `npm run start`
+ - Start the backend server: `npm run backend`
  - Make sure to import the [database dump](./dbdump/dbdump.sql)
 
 You can access the development server at [http://localhost:4200](http://localhost:4200). The backend API is listening on port [3000](http://localhost:300).
-If you using docker compose you can access phpMyAdmin at [http://localhost:8080](http://localhost:8080).(Credentials: root:root)
+If you are using docker compose you can access phpMyAdmin at [http://localhost:8080](http://localhost:8080).(Credentials: root:root)
 
 # Featues
 
@@ -20,10 +20,10 @@ If you using docker compose you can access phpMyAdmin at [http://localhost:8080]
 
 There are two authentication leves, both on the frontend and the backend. It is achieved  by using [JWT tokens](https://jwt.io/).
 
-Reular users can make read operations throug the API, and make orders. 
+Regular users can make read operations throug the API, and make orders. 
 
 Admin user can delete and create other users.
-Furthermore they can create, delete, modify foods, partners and couriers.
+Furthermore they can create, delete or modify foods, partners and couriers.
 
 Regural user can not access ceartain frontend pages, and can not access ceartan API features.
 
