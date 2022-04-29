@@ -18,7 +18,7 @@ export class AuthService {
 
   endpoint: string = '/api';//
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser!:User;
+  currentUser!:User | null;
 
   constructor(private http: HttpClient, public router: Router) {}
 
@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   getCurrentUserID(){
-    return this.currentUser.id;
+    return this.currentUser!.id;
   }
 
   getToken() {
@@ -81,6 +81,7 @@ export class AuthService {
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
       this.router.navigate(['login']);
+      this.currentUser!= null;
     }
   }
 
