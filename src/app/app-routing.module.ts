@@ -19,7 +19,7 @@ import { PartnerListComponent } from './components/partner-list/partner-list.com
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
-import { ListByDateComponent } from './list-by-date/list-by-date.component';
+import { ListByDateComponent } from './components/list-by-date/list-by-date.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage/makeorder', pathMatch: 'full'},
